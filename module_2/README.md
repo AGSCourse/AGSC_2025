@@ -11,10 +11,8 @@
 
 
 ## Module Developers and Assistants <a name="devel"></a>
-- Jane Doe
-- Jane Doe
-- ...
-
+- Cesar Fortes-Lima
+- Shaun Aron
 
 ## Learning Outcomes <a name="lo"></a>
 - ...
