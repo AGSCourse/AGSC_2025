@@ -30,6 +30,10 @@ Add one one-line description of the course (the same needs to be added on the ri
 
 
 ## Instructors
+- ...
+- ...
+
+## Acknowledgements
 - Sam Adadey
 - Valentina N. Bitoungui
 - Palwende Boua
@@ -46,10 +50,6 @@ Add one one-line description of the course (the same needs to be added on the ri
 - Siana Nkya
 - Annette Uwineza
 - Abdoulaye Yalcouye
-
-## Acknowledgements
-- ...
-- ...
 
 
 ---
