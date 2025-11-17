@@ -50,6 +50,9 @@ Add one one-line description of the course (the same needs to be added on the ri
 - Siana Nkya
 - Annette Uwineza
 - Abdoulaye Yalcouye
+- ...
+
+_Under development_
 
 
 ---
