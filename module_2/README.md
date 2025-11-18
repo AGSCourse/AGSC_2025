@@ -16,20 +16,13 @@
 
 ## Learning Outcomes <a name="lo"></a>
 
-2.1 Introduction to the course 
-.
-2.2 Foundations of Genetics and Genomics
-.
-2.3 Human Genetic Variation
-.
-2.4 Patterns of Inheritance
-.
-2.5 Principles of Evolutionary and Population Genomics
-.
-2.6 Databases
-.
-2.7 Population Genomics in Africa
-
+- 2.1 Introduction to the course. 
+- 2.2 Foundations of Genetics and Genomics.
+- 2.3 Human Genetic Variation.
+- 2.4 Patterns of Inheritance.
+- 2.5 Principles of Evolutionary and Population Genomics.
+- 2.6 Databases.
+- 2.7 Population Genomics in Africa.
 
 ## Background and Summary/Objectives <a name="sum-obj"></a>
 - ...
