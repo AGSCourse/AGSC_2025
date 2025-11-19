@@ -1,0 +1,16 @@
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] [Y-Haplogroup Classification]
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] Run Date: Tue Nov 18 19:24:19 2025
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] Input File: 1KGP_African_individuals_chrY_BD.vcf
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] File Format: vcf
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] Reference Build: 37
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] Data Type: WGS
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] Filter female individuals automatically
+[2025-11-18 19:24:19,881] - [INFO]: [Y-LineageTracker] Output all matched mutation in classification
+[2025-11-18 19:24:20,065] - [INFO]: [Y-LineageTracker] Reading input file...
+[2025-11-18 19:24:21,281] - [INFO]: [Y-LineageTracker] Input file Read
+[2025-11-18 19:24:21,282] - [INFO]: [Y-LineageTracker] There are 319 individuals in input file
+[2025-11-18 19:24:24,334] - [INFO]: [Y-LineageTracker] 0 female individuals filtered and 319 individuals left
+[2025-11-18 19:24:25,523] - [INFO]: [Y-LineageTracker] Matching variants and sites to ISOGG reference finished
+[2025-11-18 19:24:31,545] - [INFO]: [Y-LineageTracker] Classification and Tracking haplogroup lineages finished
+[2025-11-18 19:24:31,596] - [INFO]: [Y-LineageTracker] Haplogroup classification done
+[2025-11-18 19:24:31,600] - [INFO]: [Y-LineageTracker] Total run time: 11.77s
