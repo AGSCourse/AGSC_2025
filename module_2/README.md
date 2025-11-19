@@ -37,7 +37,7 @@
 ## Activities and Exercises <a name="activites"></a>
 - To obtain an example of a genomic dataset, participants can download and analyse the mitochondrial DNA (mtDNA) and the Y chromosome data presented in the 1000 Genomes Project Phase 3 as follows:
 
-### Download the data for the mtDNA.
+#### Download the data for the mtDNA.
 wget http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chrMT.phase3_callmom-v0_4.20130502.genotypes.vcf.gz
 
 ### Check the size of the file (202K).
