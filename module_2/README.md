@@ -54,9 +54,9 @@ bcftools view -m2 -M2 -v snps -S list_of_AFRsamples_mtDNA.txt ALL.chrMT.phase3_c
 
 #### Check the mtDNA haplogroups of the individuals using Haplogrep.
 Upload the generated vcf file and classify
-```
+
 https://haplogrep.i-med.ac.at 
-```
+
 
 This list has 660 African and African-descendant individuals from 1KGP (GWD, MSL, YRI, ESN, LWK, ACB, and ASW). It takes less than 2 minutes to identify the mtDNA haplogroup using Haplogrep.
 
