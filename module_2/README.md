@@ -74,12 +74,15 @@ ls -lh ALL.chrY.phase3_integrated_v2b.20130502.genotypes.vcf.gz
 
 #### Extract individuals with African ancestry using a list of ID samples.
 ```
-bcftools view -m2 -M2 -v snps -S list_of_AFRsamples_chrY.txt ALL.chrY.phase3_integrated_v2b.20130502.genotypes.vcf.gz | bcftools norm -d all -Oz -o 1KGP_African_individuals_chrY_BD.vcf.gz
+bcftools view -m2 -M2 -v snps -S list_of_AFRsamples_chrY.txt \
+ALL.chrY.phase3_integrated_v2b.20130502.genotypes.vcf.gz | \
+bcftools norm -d all -Oz -o 1KGP_African_individuals_chrY_BD.vcf.gz
 ```
 
 #### Identify the Y-haplogroup using Y-LineageTracker:
 ```
-LineageTracker classify -b 37 --filter auto --mut-info --vcf 1KGP_African_individuals_chrY_BD.vcf.gz --out 1KGP_chrY
+LineageTracker classify -b 37 --filter auto --mut-info \
+--vcf 1KGP_African_individuals_chrY_BD.vcf.gz --out 1KGP_chrY
 ```
 
 More details about this program:
