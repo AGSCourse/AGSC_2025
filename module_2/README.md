@@ -49,7 +49,9 @@ ls -lh ALL.chrMT.phase3_callmom-v0_4.20130502.genotypes.vcf.gz
 
 #### Extract individuals with African ancestry using a list of ID samples. This script also extracts only biallelic SNPs and removes duplicated SNPs in the raw dataset.
 ```
-bcftools view -m2 -M2 -v snps -S list_of_AFRsamples_mtDNA.txt ALL.chrMT.phase3_callmom-v0_4.20130502.genotypes.vcf.gz | bcftools norm -d all -Oz -o 1KGP_African_individuals_mtDNA_BD.vcf.gz
+bcftools view -m2 -M2 -v snps -S list_of_AFRsamples_mtDNA.txt \
+ALL.chrMT.phase3_callmom-v0_4.20130502.genotypes.vcf.gz | \
+bcftools norm -d all -Oz -o 1KGP_African_individuals_mtDNA_BD.vcf.gz
 ```
 
 #### Check the mtDNA haplogroups of the individuals using Haplogrep.
