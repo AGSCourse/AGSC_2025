@@ -29,12 +29,12 @@ Developed by Chris Kintu and Tsaone Tamuhla
    -   [Genotype Imputation](#impute)
 9. [Looking beyond GWAS](#beyond-gwas)
 10. [GWAS Quality Control](#qc)
-   -   [Overview](#overview)
-   -   [Learning Outcomes](#learn-obj)
-   -   [Why QC Matters](#why-qc-matters)
-   -   [Overview of the QC Workflow](#qc-work)
-   -   [Per-Individual QC](#sample-qc)
-   -   [Per-Marker QC](#snp-qc)
+    -   [Overview](#overview)
+    -   [Learning Outcomes](#learn-obj)
+    -   [Why QC Matters](#why-qc-matters)
+    -   [Overview of the QC Workflow](#qc-work)
+    -   [Per-Individual QC](#sample-qc)
+    -   [Per-Marker QC](#snp-qc)
 11. [References](#refs)
    
   
