@@ -69,8 +69,7 @@ The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.ped` to b
 
 **Note**: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
 
-==Questions==
-
+> **Questions**
 > Q1. How many individuals do you have in the data?
 > 
 > Q2. How many SNPs?
@@ -102,31 +101,41 @@ grep PROBLEM raw-GWA-data.sexcheck > raw-GWA-data.sexprobs awk '{if ($5=="PROBLE
 > **Question**:
 >> Q6. How many discordant sex do we have? 
 
-Open the file “raw-GWA-data.sexprobs” to obtain the family IDs (column 1) and individual ID (column 2) for these individuals. Column 3 denotes ascertained sex and column 4 denotes sex according to genotype dat, the genotype data are inconclusive regarding the sex of an individual and these are marked in column 4 by “0”.
+Open the file “raw-GWA-data.sexprobs” to obtain the family IDs (column 1) and individual ID (column 2) for these individuals. 
+Column 3 denotes ascertained sex and column 4 denotes sex according to genotype datw, the genotype data are inconclusive 
+regarding the sex of an individual and these are marked in column 4 by “0”.
 
-In general, any discordancies in sex should be reported to study co-ordinators to double check records for errors. In situations in which discrepancy cannot be resolved, add the family ID (FID) and individual ID (IID) of the samples to a file named “fail-sexcheck-qc.txt” (one individual per line, tab delimited). This file can be used to exclude these samples from downstream analyses.
+In general, any discordance in sex should be reported to study co-ordinators to double check records for errors. 
+In situations in which discrepancy cannot be resolved, add the family ID (FID) and individual ID (IID) of the samples 
+to a file named `fail-sexcheck-qc.txt` (one individual per line, tab delimited). This file can be used to exclude these samples 
+from downstream analyses.
 
-Step 2: Identification of individuals with elevated missing data rates or outlying heterozygosity rate
+**Step 2**: Identification of individuals with elevated missing data rates or outlying heterozygosity rate
 
 At the shell prompt, type:
+```
+./plink --bfile raw-GWA-data --missing --out raw-GWA-data
+```
 
-Plink --bfile raw-GWA-data --missing --out raw-GWA-data
-
-This command will create the files “raw-GWA-data.imiss” and “raw-GWA-data.lmiss”. The fourth column in the file “raw-GWA-data.imiss” (N_MISS) denotes the number of missing SNPs and the sixth column (F_MISS) denotes the proportion of missing SNPs per individual.
+This command will create the files “raw-GWA-data.imiss” and `raw-GWA-data.lmiss`. 
+The fourth column in the file `raw-GWA-data.imiss` (N_MISS) denotes the number of missing SNPs and the sixth column 
+(F_MISS) denotes the proportion of missing SNPs per individual.
 
 At the shell prompt type:
+```
+./plink --bfile raw-GWA-data --het --out raw-GWA-data
+ ```
 
-Plink --bfile raw-GWA-data --het --out raw-GWA-data
- 
-
-
-This command will create the file “raw-GWA-data.het”, in which the third column denotes the observed number of homozygous genotypes [O(Hom)] and the fifth column denotes the number of non-missing genotypes [N(NM)] per individual.
+This command will create the file `raw-GWA-data.het`, in which the third column denotes the observed number of 
+homozygous genotypes `O(Hom)` and the fifth column denotes the number of non-missing genotypes `N(NM)` per individual.
 
 You can calculate the observed heterozygosity rate per individual using the formula:
 
-Het = (N(NM) − O(Hom))/N(NM)
+`Het = (N(NM) − O(Hom))/N(NM)`
 
-Create a graph in which the observed heterozygosity rate per individual is plotted on the x axis and the proportion of missing SNPs per individuals is plotted on the y axis. This can be carried out using standard software such as Excel or R. A script for calculating the heterozygosity rate and producing the graph using R is supplied: “imiss-vs-het.Rscript”. At the shell prompt, type:
+Create a graph in which the observed heterozygosity rate per individual is plotted on the x axis and the proportion of 
+missing SNPs per individuals is plotted on the y axis. This can be carried out using standard software such as Excel or R. 
+A script for calculating the heterozygosity rate and producing the graph using R is supplied: “imiss-vs-het.Rscript”. At the shell prompt, type:
 
 R CMD BATCH imiss-vs-het.Rscript
 
