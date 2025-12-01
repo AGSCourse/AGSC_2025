@@ -6,7 +6,7 @@ Developed by Chris Kintu and Tsaone Tamuhla
   - [Terminologies](#terms)
   
 
-1. What is GWAS? <a name="gwasdef"></a>
+## What is GWAS? <a name="gwasdef"></a>
 A Genome-Wide Association Study (GWAS) is a study design that scans the whole genome
 to find common genetic variants that influence traits or diseases.
 
@@ -21,7 +21,7 @@ pharmacogenetics (e.g. warfarin dosing).
 - Complement Factor H variants in age-related macular degeneration (AMD).
 - Variants in genes affecting warfarin dose and other drug response traits.
 
-## Terminologies
+## Terminologies <a name="terms"></a>
 
 | Term | Definition |
 | :-: | :-: |
