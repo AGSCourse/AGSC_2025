@@ -268,137 +268,160 @@ Emerging directions:
 ## 10. GWAS Quality Control <a name="qc"></a>
 **MATERIALS & EQUIPMENT**
 
-Data
+**Data**
 - Genome-wide SNP genotype data is provided on Amathuba or via this link [here](#)
 - Associated documentation or analysis scripts are provided on Amathuba or via this link [here](#)
 
-Hardware
-•	Computer workstation running a Unix/Linux operating system (use UCT HPC server if needed)
-Software
-•	PLINK (for genome-wide association analysis)
+**Hardware**
+- Computer workstation running a Unix/Linux operating system (use UCT HPC server if needed)
+
+**Software**
+- **PLINK** (for genome-wide association analysis):
 Download: http://pngu.mgh.harvard.edu/_purcell/plink/download.shtml
-•	SMARTPCA.pl (for principal components analysis / population structure correction)
+- **SMARTPCA.pl** (for principal components analysis / population structure correction):
 Download: http://genepath.med.harvard.edu/~reich/Software.htm
-•	Statistical software for downstream analysis and visualization, such as:
-o	R: http://cran.r-project.org/
-1. Overview
-Genome-wide association studies (GWAS) and candidate-gene studies rely on high-quality genotype data. Poorly genotyped samples or SNPs can create systematic bias, leading to false-positive or false-negative associations.
-This module introduces a practical quality control (QC) workflow for case–control genetic association studies, focusing on:
-•	Detecting and removing low-quality individuals
-•	Detecting and removing low-quality markers (SNPs)
-•	Identifying population structure and relatedness that can bias results
-•	Using standard tools such as PLINK and SMARTPCA
+- **Statistical software** for downstream analysis and visualization, such as:
+   - **R**: http://cran.r-project.org/
+
+### 10.1. Overview <a name="overview"></a>
+Genome-wide association studies (GWAS) and candidate-gene studies rely on high-quality genotype data. Poorly genotyped samples or SNPs can create **systematic bias**, leading to false-positive or false-negative associations.
+
+This module introduces a practical quality control (QC) workflow for **case–control genetic association studies**, focusing on:
+- Detecting and removing low-quality **individuals**
+- Detecting and removing low-quality **markers (SNPs)**
+- Identifying **population structure** and **relatedness** that can bias results
+- Using standard tools such as **PLINK** and **SMARTPCA**
+
 In practice, this QC pipeline is completed before any formal association testing and can be generalized, with a few changes, to quantitative traits.
-2. Learning Outcomes
+
+### 10.2. Learning Outcomes <a name="learn-obj"></a>
 By the end of this QC session, students should be able to:
 1.	Explain why QC is essential in case–control genetic association studies.
 2.	Describe the main per-individual and per-marker QC steps in GWAS.
 3.	Interpret key QC metrics such as call rate, heterozygosity, Hardy–Weinberg equilibrium, minor allele frequency (MAF), and identity-by-descent (IBD).
 4.	Recognise how population stratification and relatedness can bias association results.
 5.	Outline how tools such as PLINK are used to implement QC.
-3. Why QC Matters
+
+### 10.3. Why QC Matters <a name="why-qc-markers"></a>
 Even if cases and controls are well matched and genotyping is performed in a good laboratory, several problems can still occur:
-•	Genotype calling errors (e.g. poor clustering of intensity data)
-•	Low DNA quality or concentration, leading to high missingness
-•	Sample mix-ups or mis-recorded sex
-•	Unrecognised relatedness among participants
-•	Population stratification, where allele frequencies differ by ancestry rather than disease status
+- **Genotype calling errors** (e.g. poor clustering of intensity data)
+- **Low DNA quality or concentration**, leading to high missingness
+- **Sample mix-ups or mis-recorded sex**
+- **Unrecognised relatedness** among participants
+- **Population stratification**, where allele frequencies differ by ancestry rather than disease status
+
 These issues can:
 •	inflate false positives (spurious associations)
 •	mask true signals (false negatives)
-A standardised QC pipeline helps identify substandard samples and markers and remove them before association testing.
-4. Overview of the QC Workflow
+
+A standardised QC pipeline helps identify substandard **samples** and **markers** and remove them before association testing.
+
+### 10.4. Overview of the QC Workflow
 For GWAS, QC is usually performed in two stages:
-1.	Per-individual QC (sample-level)
--	Check concordance of reported vs genetic sex
--	Identify individuals with high missingness or outlying heterozygosity
--	Detect duplicates or close relatives
--	Detect ancestry outliers (population stratification)
-2.	Per-marker QC (SNP-level)
--	Remove SNPs with high missingness
--	Remove SNPs with strong deviation from Hardy–Weinberg equilibrium (in controls)
--	Remove SNPs with different call rates in cases vs controls
--	Remove SNPs with very low MAF
+
+#### 10.4.1.	Per-individual QC (sample-level) <a name="sample-qc-over"></a>
+- Check concordance of **reported vs genetic sex**
+- Identify individuals with **high missingness** or **outlying heterozygosity**
+- Detect **duplicates or close relatives**
+- Detect **ancestry outliers** (population stratification)
+
+#### 10.4.2.	Per-marker QC (SNP-level) <a name="snp-qc-over"></a>
+- Remove SNPs with **high missingness**
+- Remove SNPs with **strong deviation from Hardy–Weinberg equilibrium** (in controls)
+- Remove SNPs with **different call rates in cases vs controls**
+- Remove SNPs with **very low MAF**
+
 The general principle is:
-First clean individuals, then clean SNPs.
-Removing problematic samples first avoids discarding otherwise good SNPs that only look bad because of a few low-quality individuals.
-5. Per-Individual QC
-5.1 Sex checks
-Goal: identify discrepancies between recorded sex and genetic sex.
-•	Use X-chromosome genotypes to compute a homozygosity/heterozygosity measure.
-•	Males (one X chromosome) should appear almost completely homozygous; females should show substantial heterozygosity.
-•	Samples with genetic sex that does not match recorded sex may indicate:
--	sample mis-labelling
--	data entry error
--	or, rarely, biological sex differences
-Action: investigate. If discrepancies cannot be resolved, exclude the sample.
+- **First clean individuals, then clean SNPs**: Removing problematic samples first avoids discarding otherwise good SNPs that only look bad because of a few low-quality individuals.
 
-5.2 Missingness and heterozygosity
-Goal: remove samples with poor genotype quality.
-•	Missing genotype rate per individual: high values often reflect low DNA quality.
-•	Heterozygosity rate:
-o	unusually high heterozygosity may indicate contamination (mixed DNA)
-o	unusually low heterozygosity may suggest inbreeding or technical problems
+#### 10.5. Per-Individual QC <a name="sample-qc"></a>
+##### 10.5.1 Sex checks
+**Goal**: identify discrepancies between recorded sex and genetic sex.
+- Use **X-chromosome genotypes** to compute a homozygosity/heterozygosity measure.
+- Males (one X chromosome) should appear almost completely homozygous; females should show substantial heterozygosity.
+- Samples with genetic sex that does not match recorded sex may indicate:
+   - sample mis-labelling
+   - data entry error
+   - or, rarely, biological sex differences
+
+**Action**: Investigate. If discrepancies cannot be resolved, exclude the sample.
+
+##### 10.5.2 Missingness and heterozygosity
+**Goal**: remove samples with poor genotype quality.
+- **Missing genotype rate per individual**: high values often reflect low DNA quality.
+- **Heterozygosity rate**:
+   - unusually **high** heterozygosity may indicate contamination (mixed DNA)
+   - unusually **low** heterozygosity may suggest inbreeding or technical problems
+
 Typical practice:
-•	Inspect distributions across all individuals.
-•	Remove individuals with:
-o	missingness above a chosen threshold (e.g. ≥3–7%), and/or
-o	heterozygosity more than a few standard deviations from the mean.
-5.3 Duplicates and related individuals
-Goal: ensure a population-based case–control sample with (approximately) unrelated individuals.
-•	Calculate pairwise relatedness using genome-wide SNPs, typically via identity-by-descent (IBD) measures.
-•	Use a pruned set of SNPs (remove regions of high LD such as the HLA).
-•	Expected IBD:
-o	≈1.0 for duplicates/monozygotic twins
-o	≈0.5 first-degree
-o	≈0.25 second-degree
-o	≈0.125 third-degree
-Action:
-•	Treat pairs with IBD close to 1 as duplicates and remove one sample.
-•	Often, any pair with IBD above ~0.1875 (between second- and third-degree) is considered too closely related, and one individual is removed.
+- Inspect distributions across all individuals.
+- Remove individuals with:
+   - missingness above a chosen threshold (e.g. ≥3–7%), and/or
+   - heterozygosity more than a few standard deviations from the mean.
 
-5.4 Ancestry and population stratification
-Goal: identify individuals whose ancestry differs substantially from the main study population.
-•	Apply principal components analysis (PCA) or a similar method (e.g. SMARTPCA) using:
-o	a pruned set of genome-wide markers
-o	reference samples of known ancestry (e.g. HapMap, 1000 Genomes)
-•	Plot the first few principal components to visualize clusters by ancestry.
-Action:
-•	Remove individuals who cluster far from the main study group or fall with clearly different ancestry groups.
-•	Fine-scale structure can be handled later in association testing by adjusting for principal components as covariates.
-6. Per-Marker QC
+##### 10.5.3 Duplicates and related individuals
+**Goal**: ensure a population-based case–control sample with (approximately) unrelated individuals.
+- Calculate pairwise relatedness using genome-wide SNPs, typically via **identity-by-descent (IBD)** measures.
+- Use a pruned set of SNPs (remove regions of high LD such as the HLA).
+- Expected IBD:
+   - ≈1.0 for duplicates/monozygotic twins
+   - ≈0.5 first-degree
+   - ≈0.25 second-degree
+   - ≈0.125 third-degree
+
+**Action**:
+- Treat pairs with IBD close to 1 as duplicates and remove one sample.
+- Often, any pair with IBD above ~0.1875 (between second- and third-degree) is considered too closely related, and one individual is removed.
+
+##### 10.5.4 Ancestry and population stratification
+**Goal**: identify individuals whose ancestry differs substantially from the main study population.
+- Apply **principal components analysis (PCA)** or a similar method (e.g. SMARTPCA) using:
+   - a pruned set of genome-wide markers
+   - reference samples of known ancestry (e.g. HapMap, 1000 Genomes)
+- Plot the first few principal components to visualize clusters by ancestry.
+
+**Action**:
+- Remove individuals who cluster far from the main study group or fall with clearly different ancestry groups.
+- Fine-scale structure can be handled later in association testing by adjusting for principal components as covariates.
+
+#### 10.6. Per-Marker QC <a name="snp-qc"><a/>
 After removing low-quality individuals, QC focuses on the SNPs themselves.
-6.1 SNP missingness
-Goal: remove markers that frequently fail to genotype.
-•	Compute call rate (1 – missingness) for each SNP.
-•	Plot the distribution of missingness across all SNPs.
+
+##### 10.6.1 SNP missingness
+**Goal**: remove markers that frequently fail to genotype.
+- Compute call rate (1 – missingness) for each SNP.
+- Plot the distribution of missingness across all SNPs.
 Typical thresholds:
-•	Exclude SNPs with call rate below 95–97%,
-•	or stricter thresholds (e.g. 99%) for low-frequency variants.
+Exclude SNPs with call rate below 95–97%,
+or stricter thresholds (e.g. 99%) for low-frequency variants.
 
-6.2 Hardy–Weinberg equilibrium (HWE)
-Goal: detect markers with gross genotyping errors.
-•	Test each SNP for deviation from HWE in controls only.
-•	Strong deviation may indicate poor genotype clustering or technical artefacts.
+##### 10.6.2 Hardy–Weinberg equilibrium (HWE)
+**Goal**: detect markers with gross genotyping errors.
+- Test each SNP for deviation from HWE in controls only.
+- Strong deviation may indicate poor genotype clustering or technical artefacts.
+
 Typical approach:
-•	Choose a p-value threshold (e.g. p < 1×10⁻6 or more stringent).
-•	Remove SNPs that fail, while manually inspecting cluster plots for any variants of special interest.
-Note: genuine disease-associated variants can deviate from HWE in cases, so only controls are used for QC.
+- Choose a p-value threshold (e.g. p < 1×10⁻6 or more stringent).
+- Remove SNPs that fail, while manually inspecting cluster plots for any variants of special interest.
 
-6.3 Differential missingness between cases and controls
-Goal: avoid artefacts where genotypes are missing more often in one group.
-•	Compare call rates between cases and controls for each SNP.
-•	A significant difference can create spurious association signals.
-Action:
-•	Remove SNPs with evidence of differential missingness (using a pre-specified p-value threshold).
-6.4 Minor allele frequency (MAF)
-Goal: avoid unstable results driven by very rare variants in standard GWAS frameworks.
-•	Remove SNPs with very low MAF (typically <1%), especially in modest sample sizes.
-•	Rare variants are harder to call accurately and offer low power in single-variant tests.
+Note: genuine disease-associated variants can deviate from HWE in **cases**, so only controls are used for QC.
 
-References
-1.	Marees A. T. et al., Nature Protocols, 2020.
-2.	Visscher P. M. et al., Nature Reviews Genetics, 2021.
+##### 10.6.3 Differential missingness between cases and controls
+**Goal**: avoid artefacts where genotypes are missing more often in one group.
+- Compare call rates between cases and controls for each SNP.
+- A significant difference can create spurious association signals.
+
+**Action**:
+- Remove SNPs with evidence of differential missingness (using a pre-specified p-value threshold).
+
+##### 6.4 Minor allele frequency (MAF)
+**Goal**: avoid unstable results driven by very rare variants in standard GWAS frameworks.
+- Remove SNPs with very low MAF (typically <1%), especially in modest sample sizes.
+- Rare variants are harder to call accurately and offer low power in single-variant tests.
+
+# References
+1.	[Marees A. T. et al., Nature Protocols, 2020](https://pubmed.ncbi.nlm.nih.gov/29484742/)
+2.	[Visscher P. M. et al., Nature Reviews Genetics, 2021](https://www.nature.com/articles/s43586-021-00056-9).
 3.	PLINK 1.9 and Regenie documentation pages.
-4.	GWAS QC Adapted from the tutorial by: Anderson et al., Nature Protocols 2010
+4.	GWAS QC **Adapted from the tutorial by**: [Anderson et al., Nature Protocols 2010](https://www.nature.com/articles/nprot.2010.116)
 
