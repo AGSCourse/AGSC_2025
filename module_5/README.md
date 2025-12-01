@@ -12,7 +12,7 @@
 ## Module instructors
 - Nara Sobreira
 - Tsaone Tamuhla
-- Aime Lumaka
+- Aimé Lumaka
 - Christopher Kintu
 
 
