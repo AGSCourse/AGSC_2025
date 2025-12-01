@@ -69,33 +69,33 @@ The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.ped` to b
 
 **Note**: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
  
-   > **Questions**:
-   >> Q1. How many individuals do you have in the data?
-   >> Q2. How many SNPs?
-   >> Q3. How many missing phenotypes?
-   >> Q4. How many cases?
-   >> Q5. How many controls?
-
-                         
+> **Questions**:
+>> Q1. How many individuals do you have in the data?
+>> Q2. How many SNPs?
+>> Q3. How many missing phenotypes?
+>> Q4. How many cases?
+>> Q5. How many controls?
 
 
-Part A: Sample QC
+## Part A: Sample QC
 
-Step 1: Identification of individuals with discordant sex information
+**Step 1**: Identification of individuals with discordant sex information
 
 At the shell prompt, type:
+```
+./plink --bfile raw-GWA-data --check-sex --out raw-GWA-data
+```
+File generated `raw-GWA-data.sexcheck`
 
-plink --bfile raw-GWA-data --check-sex --out raw-GWA-data
+This command will calculate the mean homozygosity rate across X-chromosome markers for each individual in the study. 
+We can produce a list of individuals with discordant sex data by typing:
 
-File generated -raw-GWA-data.sexcheck
-
-This command will calculate the mean homozygosity rate across X-chromosome markers for each individual in the study. We can produce a list of individuals with discordant sex data by typing:
-
-
+```
 grep PROBLEM raw-GWA-data.sexcheck > raw-GWA-data.sexprobs awk '{if ($5=="PROBLEM")print }' raw-GWA-data.sexcheck | head
+```
 
-
-Q6. How many discordant sex do we have ? 
+> **Question**:
+>> Q6. How many discordant sex do we have? 
 
 Open the file “raw-GWA-data.sexprobs” to obtain the family IDs (column 1) and individual ID (column 2) for these individuals. Column 3 denotes ascertained sex and column 4 denotes sex according to genotype dat, the genotype data are inconclusive regarding the sex of an individual and these are marked in column 4 by “0”.
 
