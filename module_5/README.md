@@ -9,12 +9,19 @@
 6. [Other resources](#other-res)
 7. [References and Acknowledgements](#ackn)
 
+## Module instructors
+- Nara Sobreira
+- Tsaone Tamuhla
+- Aimé Lumaka
+- Christopher Kintu
+
 
 ## Module Developers and Assistants <a name="devel"></a>
-- Jane Doe
-- Jane Doe
-- ...
-
+- Valentina Josiane Ngo Bitoungui
+- Lindie Lamola
+- BOUA Palwendé Romuald
+- Kevin Esoh
+  
 
 ## Learning Outcomes <a name="lo"></a>
 - ...
