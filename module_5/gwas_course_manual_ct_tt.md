@@ -77,28 +77,33 @@ pharmacogenetics (e.g. warfarin dosing).
 - Implications:
    1.	**Effect sizes are small**: A common allele with very large effect would make the disease much more prevalent.
    2.	**Many loci are involved**: Heritability of common disease is spread across many common variants, each explaining a small fraction of variance.
-- Consequence: we need large sample sizes and dense marker panels, and we focus on population-based association rather than pedigree linkage.
+- Consequence: we need **large sample sizes** and **dense marker panels**, and we focus on **population-based association** rather than pedigree linkage.
 
 ## 4. Capturing common variation <a name="ccv"></a>
-4.1 The HapMap Project
+### 4.1 The HapMap Project <a name="hapmap"></a>
 To do GWAS efficiently we must know:
 •	Where common variants are.
 •	How they differ across populations.
 •	How variants are correlated with each other.
-The International HapMap Project:
+
+The **International HapMap Project:**
 •	Catalogued millions of SNPs in multiple populations (initially European, Yoruba, Han Chinese, Japanese; later more).
-•	Measured linkage disequilibrium (LD): correlation structure between SNPs along chromosomes.
-4.2 Linkage Disequilibrium (LD)
-•	LD describes how alleles at two loci are correlated in a population.
+•	Measured **linkage disequilibrium (LD)**: correlation structure between SNPs along chromosomes.
+
+### 4.2 Linkage Disequilibrium (LD) <a name="ld"></a>
+•	LD describes how alleles at two loci are **correlated** in a population.
 •	If two SNPs are in high LD (high r²), knowing one tells you about the other.
-•	Over many generations, recombination breaks up chromosomes; LD blocks become shorter.
-Population differences:
+•	Over many generations, **recombination** breaks up chromosomes; LD blocks become shorter.
+
+**Population differences**:
 •	African-ancestry populations: shorter LD blocks (older population, more recombination).
 •	European/Asian-ancestry populations: longer LD blocks (founder events, fewer generations).
-Key measures:
-•	D′: ranges 0–1, tells you whether recombination between two loci has occurred.
-•	r²: correlation measure, used in GWAS; high r² means two SNPs carry almost the same information.
-4.3 Tag SNPs and indirect association
+
+**Key measures**:
+•	**D′**: ranges 0–1, tells you whether recombination between two loci has occurred.
+•	**r²**: correlation measure, used in GWAS; high r² means two SNPs carry almost the same information.
+
+### 4.3 Tag SNPs and indirect association <a name="tags"></a>
 •	Because of LD, we do not need to genotype every SNP.
 •	We choose tag SNPs that capture the variation of nearby SNPs (high r²).
 •	In GWAS, a significant SNP can be:
