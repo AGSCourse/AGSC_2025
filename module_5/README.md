@@ -10,7 +10,7 @@
 7. [References and Acknowledgements](#ackn)
 
 ## Module instructors
-- Nara Sobrira
+- Nara Sobreira
 - Tsaone Tamuhla
 - Aime Lumaka
 - Christopher Kintu
