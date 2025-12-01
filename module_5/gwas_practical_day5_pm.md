@@ -70,12 +70,11 @@ The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.ped` to b
 **Note**: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
  
 > **Questions**:
->>> Q1. How many individuals do you have in the data?
->>> Q2. How many SNPs?
->>> Q3. How many missing phenotypes?
->>> Q4. How many cases?
->>> Q5. How many controls?
-
+>> Q1. How many individuals do you have in the data?
+>> Q2. How many SNPs?
+>> Q3. How many missing phenotypes?
+>> Q4. How many cases?
+>> Q5. How many controls?
 
 ## Part A: Sample QC
 
