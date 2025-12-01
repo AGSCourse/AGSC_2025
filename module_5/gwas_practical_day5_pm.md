@@ -325,7 +325,7 @@ To produce a Manhattan plot to summarise the output of this analysis:
 
 To test for association of SNPs with disease under a general genotypic model (two degree of freedom test), type the following command at the shell prompt:
 ```
-./plink --bfile gwa --logistic --genotypic --ci 0.95 --out genotypic.analysis
+./plink --bfile gwa --logistic genotypic --ci 0.95 --out genotypic.analysis
 ```
 
 For each SNP, the output file “genotypic.analysis.assoc.logistic” contains three rows of results, one for the 
@@ -350,7 +350,7 @@ PLINK with a covariate file, here “gwa.covar”, which provides one row per in
 arranged in columns. To adjust for “AGE” from the covariate file, and also for sex (which is present in the fam file, 
 so is not needed in the covariate file), type the following command at the shell prompt: 
 ```
-./plink --bfile gwa --logistic hide-covar --ci 0.95 --sex --covar gwa.covar --covar-name AGE --out additive.AGE.SEX.analysis
+./plink --bfile gwa --logistic sex hide-covar --ci 0.95 --covar gwa.covar --covar-name AGE --out additive.AGE.SEX.analysis
 ```
 
 The option `hide-covar` suppresses printing of the parameter estimates for the covariate terms from the logistic regression 
