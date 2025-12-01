@@ -1,7 +1,12 @@
 # GWAS Course Manual
 Developed by Chris Kintu and Tsaone Tamuhla
 
-## What is GWAS?
+# Table of Contents
+- [What is GWAS?](#gwasdef)
+  - [Terminologies](#terms)
+  
+
+1. What is GWAS? <a name="gwasdef"></a>
 A Genome-Wide Association Study (GWAS) is a study design that scans the whole genome
 to find common genetic variants that influence traits or diseases.
 
