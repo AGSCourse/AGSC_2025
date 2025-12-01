@@ -152,6 +152,8 @@ GWAS became feasible thanks to **high-throughput SNP arrays**:
 - Coverage differs by population: Because LD is shorter in Africans, more SNPs are needed to cover the genome.
 - Technology is evolving: **next-generation sequencing** is gradually replacing arrays, giving complete sequence rather than a subset of SNPs.
 
+[Back to top](#toc)
+
 ## 6. Study design and phenotyping <a name="sdesign"></a>
 Good genotyping is useless without good **phenotypes**.
 
@@ -250,6 +252,8 @@ Strategies:
 - Use tools that integrate biological knowledge (e.g. pathway databases) to narrow down search space (e.g. Biofilter, INTERSNP).
 - Recognize that some interaction models may have **weak marginal effects**, so filtering only on main effects can miss “pure” epistasis.
 
+[Back to top](#toc)
+
 ## 8. Replication, meta-analysis and imputation <a name="repli-meta"></a>
 ### 8.1 Replication <a name="repli"></a>
 A credible GWAS finding should be:
@@ -333,6 +337,8 @@ By the end of this QC session, students should be able to:
 3.	Interpret key QC metrics such as call rate, heterozygosity, Hardy–Weinberg equilibrium, minor allele frequency (MAF), and identity-by-descent (IBD).
 4.	Recognise how population stratification and relatedness can bias association results.
 5.	Outline how tools such as PLINK are used to implement QC.
+
+[Back to top](#toc)
 
 ### 10.3. Why QC Matters <a name="why-qc-markers"></a>
 Even if cases and controls are well matched and genotyping is performed in a good laboratory, several problems can still occur:
@@ -456,4 +462,6 @@ Note: genuine disease-associated variants can deviate from HWE in **cases**, so 
 2.	[Visscher P. M. et al., Nature Reviews Genetics, 2021](https://www.nature.com/articles/s43586-021-00056-9).
 3.	PLINK 1.9 and Regenie documentation pages.
 4.	GWAS QC **Adapted from the tutorial by**: [Anderson et al., Nature Protocols 2010](https://www.nature.com/articles/nprot.2010.116)
+
+[Back to top](#toc)
 
