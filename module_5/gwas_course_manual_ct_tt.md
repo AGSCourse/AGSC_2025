@@ -6,6 +6,21 @@ Developed by Chris Kintu and Tsaone Tamuhla
    -   [Terminologies](#terms)
 2. [Basic genetic concepts behind GWAS](#concepts)
    -   [Single Nucleotide Polymorphisms (SNPs)](#snps)
+3. [Why GWAS? From rare diseases to common diseases](#whygwas)
+   -   [Linkage and its limitations](#linkage)
+   -   [Common disease / common variant (CD/CV) hypothesis](#cdcv)
+4. [Capturing common variation](#ccv)
+   -   [The HapMap Project](#hapmap)
+   -   [Linkage Disequilibrium (LD)](#ld)
+   -   [Tag SNPs and indirect association](#tags)
+5. [Genotyping technologies](#gtechs)
+6. [Study design and phenotyping](#sdesign)
+   -   [Phenotype types](#pheno)
+   -   [Standardized phenotype criteria](#pheno-criteria)
+   -   [Phenotypes from electronic medical records (EMRs)](#pheno-electro)
+7. [Association analysis](#assoc)
+   -   [Single-locus tests](#single-locus-test)
+   -   
    
   
 
