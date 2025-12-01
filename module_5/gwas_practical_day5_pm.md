@@ -21,75 +21,58 @@ PLINK and sufficient programming experience. Please read the instruction before 
 
 4.	You should also have R installed
 
-5.	Ideally, you should run the analysis on High-performance computing (HPC) environment. It would take longer if you run the analysis on your stand-alone computer/laptop
+5.	Ideally, you should run the analysis on High-performance computing (HPC) environment.
+   It would take longer if you run the analysis on your stand-alone computer/laptop
 
 
+## Installing and running PLINK (in your working directory)
 
-
-
-
-
-
-
-
-
-
-Installing and running PLINK (in your working directory)
-
-https://www.cog-genomics.org/plink/2.0/
-
+PLINK Website: https://www.cog-genomics.org/plink/2.0/
+```
 wget http://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20210203.zip
-
 Unzip plink2_linux_x86_64_20210203.zip
+```
 
+## PLINK general usage
+Website: https://www.cog-genomics.org/plink/2.0/general_usage
 
-PLINK general usage
+The old PLINK manual is quite useful. It is here: https://zzz.bwh.harvard.edu/plink/dist/plink-doc-1.07.pdf 
 
-https://www.cog-genomics.org/plink/2.0/general_usage
-ü	The old PLINK manual is quite useful. It is here: https://zzz.bwh.harvard.edu/plink/dist/plink-doc-1.07.pdf 
+**Remember that there are many versions of PLINK. The current version is PLINK2 which can be found on this link**: https://www.cog-genomics.org/plink/2.0/
 
-**Remember that there are many versions of PLINK. The current (Oct 2020) version is PLINK2 which can be found on this link: https://www.cog-genomics.org/plink/2.0/
-
-
-
-Quality control in genome-wide association studies
-
-
-
-Instruction: In this practical, we will go through the steps in performing quality control (QC) of genotype data from a simulated genome-wide association study of 1000 cases and 1000 controls, typed for 317,503 autosomal and X chromosome SNPs.
-
+## Quality control in genome-wide association studies
+**Instruction**: 
+In this practical, we will go through the steps in performing quality control (QC) of genotype data from a simulated 
+genome-wide association study of 1000 cases and 1000 controls, typed for 317,503 autosomal and X chromosome SNPs.
 
 We will begin by performing sample QC, including calculation of call rates, heterozygosity, and sex discordance.
-
 We will then perform SNP QC, including calculation of call rates and deviation from Hardy-Weinberg equilibrium.
-
 This practical is based on “Data quality control in genetic case-control association studies” (Anderson et al. 2010, Nature Protocols 5: 1564-73).
 
 1.	Start by downloading and unpacking the data from the Amathuba platform into your working folder on your personal computer or an HPC. 
--	Unpack the data 
 
-tar –xvzf raw-GWA-data
+Unpack the data 
+```
+tar –xvzf raw-GWA-data.tgz
+```
 
+**Genotype Data**:
+- `raw-GWA-data.ped`
+- `raw-GWA-data.ped`
 
-Genotype Data:
+You may also have noticed that there are some scripts (in `R` and `PERL`) we would use later in the downloaded data.
 
-raw-GWA-data.ped, raw-GWA-data.ped
-You may also have noticed that there are some scripts (in R and PERL) we would use later in the downloaded data.
+The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.ped` to binary file
+```
+./plink --file raw-GWA-data –make-bed -- out raw-GWA-data
+```
 
--the first step is to convert your raw-GWA-data.ped and raw-GWA-data.ped to binary file
-
-ANS = ./plink --file raw-GWA-data –make-bed -- out raw-GWA-data
-
-Note: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
+**Note**: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
  
-Questions :
-
-Q1. How many individuals do you have in the data?
-
-
-Q2. How many SNPs?       
-              
-
+>> **Questions**:
+>> >> Q1. How many individuals do you have in the data?
+>> >> Q2. How many SNPs?       
+   
 Q3. How many missing phenotypes?
 
 Q4. How many cases?
