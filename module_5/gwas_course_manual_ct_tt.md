@@ -20,7 +20,22 @@ Developed by Chris Kintu and Tsaone Tamuhla
    -   [Phenotypes from electronic medical records (EMRs)](#pheno-electro)
 7. [Association analysis](#assoc)
    -   [Single-locus tests](#single-locus-test)
-   -   
+   -   [Genetic models (how we code genotype)](#models)
+   -   [Covariate adjustment & population stratification](#covar)
+   -   [Multiple testing](#multi-test)
+   -   [Multi-locus (interaction) analysis](#multi-locus)
+8. [Replication, meta-analysis and imputation](#repli-meta)
+   -   [Meta-analysis](#meta)
+   -   [Genotype Imputation](#impute)
+9. [Looking beyond GWAS](#beyond-gwas)
+10. [GWAS Quality Control](#qc)
+   -   [Overview](#overview)
+   -   [Learning Outcomes](#learn-obj)
+   -   [Why QC Matters](#why-qc-matters)
+   -   [Overview of the QC Workflow](#qc-work)
+   -   [Per-Individual QC](#sample-qc)
+   -   [Per-Marker QC](#snp-qc)
+11. [References](#refs)
    
   
 
@@ -200,7 +215,7 @@ We typically adjust for:
       - Use ancestry estimation tools (e.g. **STRUCTURE**, **EIGENSTRAT**).
       - Include principal components (PCs) of genotype data as covariates in regression.
 
-### 7.4 Multiple testing
+### 7.4 Multiple testing <a name="multi-test"></a>
 A GWAS tests hundreds of thousands to millions of SNPs → huge multiple-testing burden.
 
 Methods:
@@ -266,7 +281,7 @@ Requirements:
 - Reference panel must match the study population’s ancestry reasonably well.
 - Allele coding must be aligned between study and reference.
 
-## 9. Looking beyond GWAS <a name="beyon-gwas"></a>
+## 9. Looking beyond GWAS <a name="beyond-gwas"></a>
 GWAS has:
 - Identified thousands of loci for hundreds of traits.
 - Shifted genetics from single-gene thinking to **genome-wide**, polygenic views.
@@ -331,7 +346,7 @@ These issues can:
 
 A standardised QC pipeline helps identify substandard **samples** and **markers** and remove them before association testing.
 
-### 10.4. Overview of the QC Workflow
+### 10.4. Overview of the QC Workflow <a name="qc-work"></a>
 For GWAS, QC is usually performed in two stages:
 
 #### 10.4.1.	Per-individual QC (sample-level) <a name="sample-qc-over"></a>
@@ -429,12 +444,12 @@ Note: genuine disease-associated variants can deviate from HWE in **cases**, so 
 **Action**:
 - Remove SNPs with evidence of differential missingness (using a pre-specified p-value threshold).
 
-##### 6.4 Minor allele frequency (MAF)
+##### 10.6.4 Minor allele frequency (MAF)
 **Goal**: avoid unstable results driven by very rare variants in standard GWAS frameworks.
 - Remove SNPs with very low MAF (typically <1%), especially in modest sample sizes.
 - Rare variants are harder to call accurately and offer low power in single-variant tests.
 
-# References <a name="refs"></a>
+# 11. References <a name="refs"></a>
 1.	[Marees A. T. et al., Nature Protocols, 2020](https://pubmed.ncbi.nlm.nih.gov/29484742/)
 2.	[Visscher P. M. et al., Nature Reviews Genetics, 2021](https://www.nature.com/articles/s43586-021-00056-9).
 3.	PLINK 1.9 and Regenie documentation pages.
