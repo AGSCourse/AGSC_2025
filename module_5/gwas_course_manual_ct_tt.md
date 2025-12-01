@@ -10,19 +10,19 @@ Developed by Chris Kintu and Tsaone Tamuhla
   
 
 ## 1. What is GWAS? <a name="gwasdef"></a>
-A Genome-Wide Association Study (GWAS) is a study design that scans the whole genome
+A **Genome-Wide Association Study (GWAS)** is a study design that scans the whole genome
 to find common genetic variants that influence traits or diseases.
 
 **Goals**:
-- Identify genetic risk factors for common, complex diseases (e.g. type 2 diabetes,
+- Identify **genetic risk factors** for common, complex diseases (e.g. type 2 diabetes,
 schizophrenia, heart disease) and for quantitative traits (e.g. cholesterol levels).
-- Understand biology of disease and find potential therapeutic targets.
-- Improve risk prediction and enable personalized or precision medicine, including
+- Understand **biology of disease** and find potential therapeutic targets.
+- Improve **risk prediction** and enable **personalized or precision medicine**, including
 pharmacogenetics (e.g. warfarin dosing).
 
 **Key early successes**:
-- Complement Factor H variants in age-related macular degeneration (AMD).
-- Variants in genes affecting warfarin dose and other drug response traits.
+- Complement Factor H variants in **age-related macular degeneration (AMD)**.
+- Variants in genes affecting **warfarin dose** and other drug response traits.
 
 ## Terminologies <a name="terms"></a>
 
@@ -44,8 +44,8 @@ pharmacogenetics (e.g. warfarin dosing).
 
 ## 2. Basic genetic concepts behind GWAS <a name="concepts"></a>
 ### 2.1 Single Nucleotide Polymorphisms (SNPs) <a name="snps"></a>
-- A SNP is a single base-pair change in the DNA sequence (e.g. A→G).
-- Most GWAS use SNPs as markers that tag regions of the genome.
+- A **SNP** is a single base-pair change in the DNA sequence (e.g. A→G).
+- Most GWAS use SNPs as **markers** that tag regions of the genome.
 - Most SNPs are neutral, but some can:
    - Change amino acids in proteins.
    - Affect mRNA stability or splicing.
@@ -53,11 +53,330 @@ pharmacogenetics (e.g. warfarin dosing).
  
 **Alleles and frequency**
 - Most SNPs have two alleles in the population (e.g. A and G).
-- We describe them using minor allele frequency (MAF):
+- We describe them using **minor allele frequency (MAF)**:
    - If G is present in 40% of chromosomes, MAF = 0.40.
 - In GWAS we typically focus on common variants (MAF ≥ ~1–5%).
 
 **SNPs vs mutations**
 - In practice:
-   - SNP: a common single-base variant.
-   - Mutation: a very rare variant that often has a large functional effect (classic in Mendelian diseases like cystic fibrosis).
+   - **SNP**: a common single-base variant.
+   - **Mutation**: a very rare variant that often has a large functional effect (classic in Mendelian diseases like cystic fibrosis).
+ 
+
+## 3. Why GWAS? From rare diseases to common diseases <a name="whygwas"></a>
+### 3.1	Linkage and its limitations <a name="linkage"></a>
+- For **rare, highly penetrant diseases** (e.g. cystic fibrosis, Huntington disease), family-based **linkage analysis** works well.
+   - Track inheritance of markers and disease within families.
+   - Identify genomic regions where markers and disease co-segregate.
+- For **common complex diseases** (heart disease, cancer, diabetes), linkage has largely failed:
+   -	Genetic effects are smaller.
+   -	Many loci contribute → Need a different approach: population-based association.
+3.2 Common disease / common variant (CD/CV) hypothesis
+•	Proposes that common diseases are partly due to common variants.
+•	Implications:
+1.	Effect sizes are small.
+A common allele with very large effect would make the disease much more prevalent.
+2.	Many loci are involved.
+Heritability of common disease is spread across many common variants, each explaining a small fraction of variance.
+•	Consequence: we need large sample sizes and dense marker panels, and we focus on population-based association rather than pedigree linkage.
+
+4. Capturing common variation
+4.1 The HapMap Project
+To do GWAS efficiently we must know:
+•	Where common variants are.
+•	How they differ across populations.
+•	How variants are correlated with each other.
+The International HapMap Project:
+•	Catalogued millions of SNPs in multiple populations (initially European, Yoruba, Han Chinese, Japanese; later more).
+•	Measured linkage disequilibrium (LD): correlation structure between SNPs along chromosomes.
+4.2 Linkage Disequilibrium (LD)
+•	LD describes how alleles at two loci are correlated in a population.
+•	If two SNPs are in high LD (high r²), knowing one tells you about the other.
+•	Over many generations, recombination breaks up chromosomes; LD blocks become shorter.
+Population differences:
+•	African-ancestry populations: shorter LD blocks (older population, more recombination).
+•	European/Asian-ancestry populations: longer LD blocks (founder events, fewer generations).
+Key measures:
+•	D′: ranges 0–1, tells you whether recombination between two loci has occurred.
+•	r²: correlation measure, used in GWAS; high r² means two SNPs carry almost the same information.
+4.3 Tag SNPs and indirect association
+•	Because of LD, we do not need to genotype every SNP.
+•	We choose tag SNPs that capture the variation of nearby SNPs (high r²).
+•	In GWAS, a significant SNP can be:
+o	Directly associated (it is itself causal), or
+o	Indirectly associated (it tags a nearby untyped causal variant).
+•	Therefore a GWAS hit marks a region; follow-up is required to find the true causal variant.
+
+5. Genotyping technologies
+GWAS became feasible thanks to high-throughput SNP arrays:
+•	Illumina and Affymetrix are the main platforms.
+•	They use different chemistries (bead-based vs probe-based hybridization) but similar principles: genotype hundreds of thousands to millions of SNPs in parallel.
+Important considerations:
+•	Coverage differs by population.
+Because LD is shorter in Africans, more SNPs are needed to cover the genome.
+•	Technology is evolving: next-generation sequencing is gradually replacing arrays, giving complete sequence rather than a subset of SNPs.
+
+6. Study design and phenotyping
+Good genotyping is useless without good phenotypes.
+6.1	Phenotype types
+1.	Quantitative traits
+-	Continuous measures (e.g. LDL levels, BMI, blood pressure).
+-	Generally, more powerful for detecting genetic effects.
+-	Interpretation is straightforward: change in trait per allele.
+2.	Categorical traits (typically case–control)
+-	Disease status: affected vs unaffected.
+-	Essential when no good quantitative proxy exists (e.g. multiple sclerosis).
+-	Still very successful if phenotype definitions are robust.
+6.2 Standardized phenotype criteria
+•	Use clear, reproducible clinical definitions (e.g. McDonald criteria for multiple sclerosis).
+•	For multi-center studies, standardized rules reduce misclassification and site effects.
+•	Sometimes inter-rater reliability is examined to ensure clinicians apply criteria consistently.
+6.3 Phenotypes from electronic medical records (EMRs)
+•	Biobanks linked to EMRs provide huge sample sizes.
+•	Challenges:
+o	EMRs are built for healthcare and billing, not research.
+o	Need algorithms that combine diagnostic codes, procedure codes and sometimes natural language processing of free text.
+o	Algorithms are iteratively refined and validated by chart review (evaluate positive predictive value).
+
+7. Association analysis
+Once we have genotypes and phenotypes, we test each SNP for association.
+7.1 Single-locus tests
+•	Quantitative traits:
+o	Usually analysed using linear regression or ANOVA.
+o	Outcome: trait value; predictor: genotype plus covariates.
+•	Binary traits (case–control):
+o	Either:
+	Chi-square / Fisher’s exact test on 2×3 or 2×2 genotype/allele count tables, or
+	Logistic regression, which models the log-odds of disease as a function of genotype and covariates.
+o	Logistic regression is preferred because it:
+	Adjusts for covariates.
+	Provides odds ratios as effect sizes.
+	Has good diagnostics.
+7.2 Genetic models (how we code genotype)
+For a biallelic SNP with alleles A and a, genotype can be encoded as:
+•	Additive model: 0, 1, 2 copies of A (assumes linear effect).
+•	Dominant model (A): AA/Aa vs aa.
+•	Recessive model (A): AA vs Aa/aa.
+•	Multiplicative, genotypic, allelic models, etc.
+In practice:
+•	Most GWAS report additive models only:
+o	Reasonable power for additive and many dominant effects.
+o	Underpowered for purely recessive effects, but computationally simpler.
+7.3 Covariate adjustment & population stratification
+We typically adjust for:
+•	Demographics: age, sex.
+•	Study design: site, batch.
+•	Clinical factors: BMI, medication use, etc.
+•	Population structure:
+o	Allele frequencies and disease prevalence differ across ancestries.
+o	If not corrected, this population stratification can create spurious associations.
+o	Approaches:
+	Use ancestry estimation tools (e.g. STRUCTURE, EIGENSTRAT).
+	Include principal components (PCs) of genotype data as covariates in regression.
+7.4 Multiple testing
+A GWAS tests hundreds of thousands to millions of SNPs → huge multiple-testing burden.
+Methods:
+•	Bonferroni correction
+o	Adjust significance threshold: α* = 0.05 / number_of_tests.
+o	Very conservative because tests are not fully independent.
+o	Leads to typical GWAS threshold around 5×10⁻⁸–10⁻⁷.
+•	False Discovery Rate (FDR)
+o	Controls expected proportion of false positives among declared hits.
+o	Useful when many associations are expected (e.g. eQTL, expression studies).
+•	Permutation testing
+o	Empirical approach: repeatedly shuffle phenotypes to break real associations.
+o	Build null distribution of test statistics, derive empirical p-values.
+o	Computationally expensive but robust.
+•	Genome-wide significance
+o	Based on the effective number of independent tests considering LD.
+o	For European ancestry, commonly ~5×10⁻⁸ is used.
+o	Appropriate only for truly genome-wide scans, not for focused candidate-gene or replication studies.
+7.5 Multi-locus (interaction) analysis
+•	GWAS enables investigation of:
+o	Gene–gene interactions (epistasis).
+o	Gene–environment interactions.
+•	Challenges:
+o	Combinatorial explosion: with 1 million SNPs, pairwise combinations are ~5×10¹¹.
+o	Limited power, multiple testing, computational burden.
+Strategies:
+•	Filter SNPs first (e.g. by main-effect p-value, biological pathway membership).
+•	Use tools that integrate biological knowledge (e.g. pathway databases) to narrow down search space (e.g. Biofilter, INTERSNP).
+•	Recognize that some interaction models may have weak marginal effects, so filtering only on main effects can miss “pure” epistasis.
+
+8. Replication, meta-analysis and imputation
+8.1 Replication
+A credible GWAS finding should be:
+•	Tested in an independent sample.
+•	Using similar phenotype definitions and similar population.
+•	With adequate power (often larger than the discovery sample, to overcome “winner’s curse”, where initial effect sizes are over-estimated).
+Key points:
+•	The unit of replication is really the region, not necessarily the exact SNP, because of LD.
+•	It is acceptable to replicate with a different SNP in high LD, as long as effect direction and magnitude are consistent.
+8.2 Meta-analysis
+•	Enables combining results from multiple GWAS without sharing raw data.
+•	Requires:
+o	Harmonized phenotypes and covariate adjustments.
+o	Common reference genome build and allele coding.
+o	Careful QC to ensure samples are not duplicated across studies.
+•	Heterogeneity across studies is assessed using statistics like Q and I².
+•	Meta-analysis has powered very large discoveries (e.g. 95 lipid loci from >100,000 individuals).
+8.3 Genotype imputation
+Problem: different studies use different SNP arrays → different sets of SNPs.
+Solution: imputation:
+•	Use reference panels (HapMap, 1000 Genomes) with dense genotype/sequence data.
+•	Use LD and haplotype information to infer untyped genotypes in your study.
+•	Outputs are often genotype probabilities or dosages rather than hard calls.
+•	Analysis must account for uncertainty (often via Bayesian or likelihood approaches).
+Requirements:
+•	Reference panel must match the study population’s ancestry reasonably well.
+•	Allele coding must be aligned between study and reference.
+
+9. Looking beyond GWAS
+GWAS has:
+•	Identified thousands of loci for hundreds of traits.
+•	Shifted genetics from single-gene thinking to genome-wide, polygenic views.
+•	Opened doors to:
+o	Functional follow-up (e.g. lab experiments, expression studies).
+o	Polygenic risk scores.
+o	Pharmacogenomics and precision medicine.
+Emerging directions:
+•	Whole-genome sequencing: replacing array-based genotyping, capturing both common and rare variation.
+•	Integration of multi-omics (genomics, transcriptomics, proteomics, metabolomics) and environmental data.
+•	Linking genetics with high-dimensional phenotypes such as imaging, wearables, or detailed clinical trajectories.
+
+(ii) GWAS Quality Control
+MATERIALS & EQUIPMENT
+Data
+•	Genome-wide SNP genotype data is provided on Amathuba
+•	Associated documentation or analysis scripts are provided on Amathuba
+
+Hardware
+•	Computer workstation running a Unix/Linux operating system (use UCT HPC server if needed)
+Software
+•	PLINK (for genome-wide association analysis)
+Download: http://pngu.mgh.harvard.edu/_purcell/plink/download.shtml
+•	SMARTPCA.pl (for principal components analysis / population structure correction)
+Download: http://genepath.med.harvard.edu/~reich/Software.htm
+•	Statistical software for downstream analysis and visualization, such as:
+o	R: http://cran.r-project.org/
+1. Overview
+Genome-wide association studies (GWAS) and candidate-gene studies rely on high-quality genotype data. Poorly genotyped samples or SNPs can create systematic bias, leading to false-positive or false-negative associations.
+This module introduces a practical quality control (QC) workflow for case–control genetic association studies, focusing on:
+•	Detecting and removing low-quality individuals
+•	Detecting and removing low-quality markers (SNPs)
+•	Identifying population structure and relatedness that can bias results
+•	Using standard tools such as PLINK and SMARTPCA
+In practice, this QC pipeline is completed before any formal association testing and can be generalized, with a few changes, to quantitative traits.
+2. Learning Outcomes
+By the end of this QC session, students should be able to:
+1.	Explain why QC is essential in case–control genetic association studies.
+2.	Describe the main per-individual and per-marker QC steps in GWAS.
+3.	Interpret key QC metrics such as call rate, heterozygosity, Hardy–Weinberg equilibrium, minor allele frequency (MAF), and identity-by-descent (IBD).
+4.	Recognise how population stratification and relatedness can bias association results.
+5.	Outline how tools such as PLINK are used to implement QC.
+3. Why QC Matters
+Even if cases and controls are well matched and genotyping is performed in a good laboratory, several problems can still occur:
+•	Genotype calling errors (e.g. poor clustering of intensity data)
+•	Low DNA quality or concentration, leading to high missingness
+•	Sample mix-ups or mis-recorded sex
+•	Unrecognised relatedness among participants
+•	Population stratification, where allele frequencies differ by ancestry rather than disease status
+These issues can:
+•	inflate false positives (spurious associations)
+•	mask true signals (false negatives)
+A standardised QC pipeline helps identify substandard samples and markers and remove them before association testing.
+4. Overview of the QC Workflow
+For GWAS, QC is usually performed in two stages:
+1.	Per-individual QC (sample-level)
+-	Check concordance of reported vs genetic sex
+-	Identify individuals with high missingness or outlying heterozygosity
+-	Detect duplicates or close relatives
+-	Detect ancestry outliers (population stratification)
+2.	Per-marker QC (SNP-level)
+-	Remove SNPs with high missingness
+-	Remove SNPs with strong deviation from Hardy–Weinberg equilibrium (in controls)
+-	Remove SNPs with different call rates in cases vs controls
+-	Remove SNPs with very low MAF
+The general principle is:
+First clean individuals, then clean SNPs.
+Removing problematic samples first avoids discarding otherwise good SNPs that only look bad because of a few low-quality individuals.
+5. Per-Individual QC
+5.1 Sex checks
+Goal: identify discrepancies between recorded sex and genetic sex.
+•	Use X-chromosome genotypes to compute a homozygosity/heterozygosity measure.
+•	Males (one X chromosome) should appear almost completely homozygous; females should show substantial heterozygosity.
+•	Samples with genetic sex that does not match recorded sex may indicate:
+-	sample mis-labelling
+-	data entry error
+-	or, rarely, biological sex differences
+Action: investigate. If discrepancies cannot be resolved, exclude the sample.
+
+5.2 Missingness and heterozygosity
+Goal: remove samples with poor genotype quality.
+•	Missing genotype rate per individual: high values often reflect low DNA quality.
+•	Heterozygosity rate:
+o	unusually high heterozygosity may indicate contamination (mixed DNA)
+o	unusually low heterozygosity may suggest inbreeding or technical problems
+Typical practice:
+•	Inspect distributions across all individuals.
+•	Remove individuals with:
+o	missingness above a chosen threshold (e.g. ≥3–7%), and/or
+o	heterozygosity more than a few standard deviations from the mean.
+5.3 Duplicates and related individuals
+Goal: ensure a population-based case–control sample with (approximately) unrelated individuals.
+•	Calculate pairwise relatedness using genome-wide SNPs, typically via identity-by-descent (IBD) measures.
+•	Use a pruned set of SNPs (remove regions of high LD such as the HLA).
+•	Expected IBD:
+o	≈1.0 for duplicates/monozygotic twins
+o	≈0.5 first-degree
+o	≈0.25 second-degree
+o	≈0.125 third-degree
+Action:
+•	Treat pairs with IBD close to 1 as duplicates and remove one sample.
+•	Often, any pair with IBD above ~0.1875 (between second- and third-degree) is considered too closely related, and one individual is removed.
+
+5.4 Ancestry and population stratification
+Goal: identify individuals whose ancestry differs substantially from the main study population.
+•	Apply principal components analysis (PCA) or a similar method (e.g. SMARTPCA) using:
+o	a pruned set of genome-wide markers
+o	reference samples of known ancestry (e.g. HapMap, 1000 Genomes)
+•	Plot the first few principal components to visualize clusters by ancestry.
+Action:
+•	Remove individuals who cluster far from the main study group or fall with clearly different ancestry groups.
+•	Fine-scale structure can be handled later in association testing by adjusting for principal components as covariates.
+6. Per-Marker QC
+After removing low-quality individuals, QC focuses on the SNPs themselves.
+6.1 SNP missingness
+Goal: remove markers that frequently fail to genotype.
+•	Compute call rate (1 – missingness) for each SNP.
+•	Plot the distribution of missingness across all SNPs.
+Typical thresholds:
+•	Exclude SNPs with call rate below 95–97%,
+•	or stricter thresholds (e.g. 99%) for low-frequency variants.
+
+6.2 Hardy–Weinberg equilibrium (HWE)
+Goal: detect markers with gross genotyping errors.
+•	Test each SNP for deviation from HWE in controls only.
+•	Strong deviation may indicate poor genotype clustering or technical artefacts.
+Typical approach:
+•	Choose a p-value threshold (e.g. p < 1×10⁻6 or more stringent).
+•	Remove SNPs that fail, while manually inspecting cluster plots for any variants of special interest.
+Note: genuine disease-associated variants can deviate from HWE in cases, so only controls are used for QC.
+
+6.3 Differential missingness between cases and controls
+Goal: avoid artefacts where genotypes are missing more often in one group.
+•	Compare call rates between cases and controls for each SNP.
+•	A significant difference can create spurious association signals.
+Action:
+•	Remove SNPs with evidence of differential missingness (using a pre-specified p-value threshold).
+6.4 Minor allele frequency (MAF)
+Goal: avoid unstable results driven by very rare variants in standard GWAS frameworks.
+•	Remove SNPs with very low MAF (typically <1%), especially in modest sample sizes.
+•	Rare variants are harder to call accurately and offer low power in single-variant tests.
+
+References
+1.	Marees A. T. et al., Nature Protocols, 2020.
+2.	Visscher P. M. et al., Nature Reviews Genetics, 2021.
+3.	PLINK 1.9 and Regenie documentation pages.
+4.	GWAS QC Adapted from the tutorial by: Anderson et al., Nature Protocols 2010
+
