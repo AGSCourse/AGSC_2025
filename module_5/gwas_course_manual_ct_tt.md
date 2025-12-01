@@ -5,6 +5,7 @@ Developed by Chris Kintu and Tsaone Tamuhla
 1. [What is GWAS?](#gwasdef)
   - [Terminologies](#terms)
 2. [Basic genetic concepts behind GWAS](#concepts)
+  - [2.1 Single Nucleotide Polymorphisms (SNPs)](#snps)
   
 
 ## 1. What is GWAS? <a name="gwasdef"></a>
@@ -40,4 +41,5 @@ pharmacogenetics (e.g. warfarin dosing).
 | Population substructure | The presence of distinct groups of individuals with subtle differences in allele frequency such that genetic data can be used to cluster these individuals into separate groups. |
 | Principal Component Analysis | A mathematical procedure for calculating a number of orthogonal latent variables that summarize a data matrix containing many potentially correlated variables. |
 
-## 2. Basic genetic concepts behind GWAS
+## 2. Basic genetic concepts behind GWAS <a name="concepts"></a>
+### 2.1 Single Nucleotide Polymorphisms (SNPs) <a name="snps"></a>
