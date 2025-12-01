@@ -71,16 +71,15 @@ pharmacogenetics (e.g. warfarin dosing).
 - For **common complex diseases** (heart disease, cancer, diabetes), linkage has largely failed:
    -	Genetic effects are smaller.
    -	Many loci contribute → Need a different approach: population-based association.
-3.2 Common disease / common variant (CD/CV) hypothesis
-•	Proposes that common diseases are partly due to common variants.
-•	Implications:
-1.	Effect sizes are small.
-A common allele with very large effect would make the disease much more prevalent.
-2.	Many loci are involved.
-Heritability of common disease is spread across many common variants, each explaining a small fraction of variance.
-•	Consequence: we need large sample sizes and dense marker panels, and we focus on population-based association rather than pedigree linkage.
 
-4. Capturing common variation
+## 3.2 Common disease / common variant (CD/CV) hypothesis <a name="cdcv"></a>
+- Proposes that **common diseases are partly due to common variants**.
+- Implications:
+   1.	**Effect sizes are small**: A common allele with very large effect would make the disease much more prevalent.
+   2.	**Many loci are involved**: Heritability of common disease is spread across many common variants, each explaining a small fraction of variance.
+- Consequence: we need large sample sizes and dense marker panels, and we focus on population-based association rather than pedigree linkage.
+
+## 4. Capturing common variation <a name="ccv"></a>
 4.1 The HapMap Project
 To do GWAS efficiently we must know:
 •	Where common variants are.
