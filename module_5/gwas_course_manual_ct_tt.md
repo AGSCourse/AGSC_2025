@@ -82,45 +82,45 @@ pharmacogenetics (e.g. warfarin dosing).
 ## 4. Capturing common variation <a name="ccv"></a>
 ### 4.1 The HapMap Project <a name="hapmap"></a>
 To do GWAS efficiently we must know:
--	Where common variants are.
--	How they differ across populations.
--	How variants are correlated with each other.
+- Where common variants are.
+- How they differ across populations.
+- How variants are correlated with each other.
 
 The **International HapMap Project:**
--	Catalogued millions of SNPs in multiple populations (initially European, Yoruba, Han Chinese, Japanese; later more).
--	Measured **linkage disequilibrium (LD)**: correlation structure between SNPs along chromosomes.
+- Catalogued millions of SNPs in multiple populations (initially European, Yoruba, Han Chinese, Japanese; later more).
+- Measured **linkage disequilibrium (LD)**: correlation structure between SNPs along chromosomes.
 
 ### 4.2 Linkage Disequilibrium (LD) <a name="ld"></a>
--	LD describes how alleles at two loci are **correlated** in a population.
--	If two SNPs are in high LD (high r²), knowing one tells you about the other.
--	Over many generations, **recombination** breaks up chromosomes; LD blocks become shorter.
+- LD describes how alleles at two loci are **correlated** in a population.
+- If two SNPs are in high LD (high r²), knowing one tells you about the other.
+- Over many generations, **recombination** breaks up chromosomes; LD blocks become shorter.
 
 **Population differences**:
--	African-ancestry populations: shorter LD blocks (older population, more recombination).
--	European/Asian-ancestry populations: longer LD blocks (founder events, fewer generations).
+- African-ancestry populations: shorter LD blocks (older population, more recombination).
+- European/Asian-ancestry populations: longer LD blocks (founder events, fewer generations).
 
 **Key measures**:
--	**D′**: ranges 0–1, tells you whether recombination between two loci has occurred.
--	**r²**: correlation measure, used in GWAS; high r² means two SNPs carry almost the same information.
+- **D′**: ranges 0–1, tells you whether recombination between two loci has occurred.
+- **r²**: correlation measure, used in GWAS; high r² means two SNPs carry almost the same information.
 
 ### 4.3 Tag SNPs and indirect association <a name="tags"></a>
--	Because of LD, we do not need to genotype every SNP.
--	We choose **tag SNPs** that capture the variation of nearby SNPs (high r²).
--	In GWAS, a significant SNP can be:
-   -	**Directly associated** (it is itself causal), or
+- Because of LD, we do not need to genotype every SNP.
+- We choose **tag SNPs** that capture the variation of nearby SNPs (high r²).
+- In GWAS, a significant SNP can be:
+   - **Directly associated** (it is itself causal), or
    - **Indirectly associated** (it tags a nearby untyped causal variant).
 -	Therefore, a GWAS hit marks a region; follow-up is required to find the true causal variant.
 
 ## 5. Genotyping technologies <a name="gtechs"></a>
-GWAS became feasible thanks to high-throughput SNP arrays:
-•	Illumina and Affymetrix are the main platforms.
-•	They use different chemistries (bead-based vs probe-based hybridization) but similar principles: genotype hundreds of thousands to millions of SNPs in parallel.
-Important considerations:
-•	Coverage differs by population.
-Because LD is shorter in Africans, more SNPs are needed to cover the genome.
-•	Technology is evolving: next-generation sequencing is gradually replacing arrays, giving complete sequence rather than a subset of SNPs.
+GWAS became feasible thanks to **high-throughput SNP arrays**:
+- **Illumina** and **Affymetrix** are the main platforms.
+- They use different chemistries (bead-based vs probe-based hybridization) but similar principles: genotype hundreds of thousands to millions of SNPs in parallel.
 
-6. Study design and phenotyping
+**Important considerations**:
+- Coverage differs by population: Because LD is shorter in Africans, more SNPs are needed to cover the genome.
+- Technology is evolving: next-generation sequencing is gradually replacing arrays, giving complete sequence rather than a subset of SNPs.
+
+## 6. Study design and phenotyping <a name="sdesign"></a>
 Good genotyping is useless without good phenotypes.
 6.1	Phenotype types
 1.	Quantitative traits
