@@ -3,9 +3,10 @@ Developed by Chris Kintu and Tsaone Tamuhla
 
 # Table of Contents
 1. [What is GWAS?](#gwasdef)
-   -  [Terminologies](#terms)
+   -   [Terminologies](#terms)
 2. [Basic genetic concepts behind GWAS](#concepts)
-   1. [Single Nucleotide Polymorphisms (SNPs)](#snps)
+   -   [Single Nucleotide Polymorphisms (SNPs)](#snps)
+   
   
 
 ## 1. What is GWAS? <a name="gwasdef"></a>
@@ -43,3 +44,20 @@ pharmacogenetics (e.g. warfarin dosing).
 
 ## 2. Basic genetic concepts behind GWAS <a name="concepts"></a>
 ### 2.1 Single Nucleotide Polymorphisms (SNPs) <a name="snps"></a>
+- A SNP is a single base-pair change in the DNA sequence (e.g. A→G).
+- Most GWAS use SNPs as markers that tag regions of the genome.
+- Most SNPs are neutral, but some can:
+   - Change amino acids in proteins.
+   - Affect mRNA stability or splicing.
+   - Alter transcription factor binding and gene regulation.
+ 
+**Alleles and frequency**
+- Most SNPs have two alleles in the population (e.g. A and G).
+- We describe them using minor allele frequency (MAF):
+   - If G is present in 40% of chromosomes, MAF = 0.40.
+- In GWAS we typically focus on common variants (MAF ≥ ~1–5%).
+
+**SNPs vs mutations**
+- In practice:
+   - SNP: a common single-base variant.
+   - Mutation: a very rare variant that often has a large functional effect (classic in Mendelian diseases like cystic fibrosis).
