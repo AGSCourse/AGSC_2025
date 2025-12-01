@@ -118,141 +118,159 @@ GWAS became feasible thanks to **high-throughput SNP arrays**:
 
 **Important considerations**:
 - Coverage differs by population: Because LD is shorter in Africans, more SNPs are needed to cover the genome.
-- Technology is evolving: next-generation sequencing is gradually replacing arrays, giving complete sequence rather than a subset of SNPs.
+- Technology is evolving: **next-generation sequencing** is gradually replacing arrays, giving complete sequence rather than a subset of SNPs.
 
 ## 6. Study design and phenotyping <a name="sdesign"></a>
-Good genotyping is useless without good phenotypes.
-6.1	Phenotype types
-1.	Quantitative traits
--	Continuous measures (e.g. LDL levels, BMI, blood pressure).
--	Generally, more powerful for detecting genetic effects.
--	Interpretation is straightforward: change in trait per allele.
-2.	Categorical traits (typically case–control)
--	Disease status: affected vs unaffected.
--	Essential when no good quantitative proxy exists (e.g. multiple sclerosis).
--	Still very successful if phenotype definitions are robust.
-6.2 Standardized phenotype criteria
-•	Use clear, reproducible clinical definitions (e.g. McDonald criteria for multiple sclerosis).
-•	For multi-center studies, standardized rules reduce misclassification and site effects.
-•	Sometimes inter-rater reliability is examined to ensure clinicians apply criteria consistently.
-6.3 Phenotypes from electronic medical records (EMRs)
-•	Biobanks linked to EMRs provide huge sample sizes.
-•	Challenges:
-o	EMRs are built for healthcare and billing, not research.
-o	Need algorithms that combine diagnostic codes, procedure codes and sometimes natural language processing of free text.
-o	Algorithms are iteratively refined and validated by chart review (evaluate positive predictive value).
+Good genotyping is useless without good **phenotypes**.
 
-7. Association analysis
+### 6.1	Phenotype types <a name="pheno"></a>
+1. Quantitative traits
+   - Continuous measures (e.g. LDL levels, BMI, blood pressure).
+   - Generally, **more powerful** for detecting genetic effects.
+   - Interpretation is straightforward: change in trait per allele.
+2. Categorical traits (typically case–control)
+   - Disease status: affected vs unaffected.
+   - Essential when no good quantitative proxy exists (e.g. multiple sclerosis).
+   - Still very successful if phenotype definitions are robust.
+
+### 6.2 Standardized phenotype criteria <a name="pheno-criteria"></a>
+- Use clear, reproducible clinical definitions (e.g. McDonald criteria for multiple sclerosis).
+- For multi-center studies, standardized rules reduce **misclassification** and **site effects**.
+- Sometimes inter-rater reliability is examined to ensure clinicians apply criteria consistently.
+
+### 6.3 Phenotypes from electronic medical records (EMRs) <a name="pheno-electro"></a>
+- Biobanks linked to EMRs provide huge sample sizes.
+- Challenges:
+   - EMRs are built for healthcare and billing, not research.
+   - Need algorithms that combine diagnostic codes, procedure codes and sometimes **natural language processing** of free text.
+   - Algorithms are iteratively refined and validated by chart review (evaluate positive predictive value).
+
+## 7. Association analysis <a name="assoc"></a>
 Once we have genotypes and phenotypes, we test each SNP for association.
-7.1 Single-locus tests
-•	Quantitative traits:
-o	Usually analysed using linear regression or ANOVA.
-o	Outcome: trait value; predictor: genotype plus covariates.
-•	Binary traits (case–control):
-o	Either:
-	Chi-square / Fisher’s exact test on 2×3 or 2×2 genotype/allele count tables, or
-	Logistic regression, which models the log-odds of disease as a function of genotype and covariates.
-o	Logistic regression is preferred because it:
-	Adjusts for covariates.
-	Provides odds ratios as effect sizes.
-	Has good diagnostics.
-7.2 Genetic models (how we code genotype)
+
+### 7.1 Single-locus tests <a name="single-locus-test"></a>
+- Quantitative traits:
+   - Usually analysed using **linear regression** or ANOVA.
+   - Outcome: trait value; predictor: genotype plus covariates.
+- Binary traits (case–control):
+   - Either:
+      - Chi-square / Fisher’s exact test on 2×3 or 2×2 genotype/allele count tables, or
+      - **Logistic regression**, which models the log-odds of disease as a function of genotype and covariates.
+   - Logistic regression is preferred because it:
+      - Adjusts for covariates.
+      - Provides **odds ratios** as effect sizes.
+      - Has good diagnostics.
+
+### 7.2 Genetic models (how we code genotype) <a name="models"></a>
 For a biallelic SNP with alleles A and a, genotype can be encoded as:
-•	Additive model: 0, 1, 2 copies of A (assumes linear effect).
-•	Dominant model (A): AA/Aa vs aa.
-•	Recessive model (A): AA vs Aa/aa.
-•	Multiplicative, genotypic, allelic models, etc.
+- **Additive model**: 0, 1, 2 copies of A (assumes linear effect).
+- **Dominant model (A)**: AA/Aa vs aa.
+- **Recessive model (A)**: AA vs Aa/aa.
+- **Multiplicative, genotypic, allelic** models, etc.
+
 In practice:
-•	Most GWAS report additive models only:
-o	Reasonable power for additive and many dominant effects.
-o	Underpowered for purely recessive effects, but computationally simpler.
-7.3 Covariate adjustment & population stratification
+- Most GWAS report additive models only:
+   - Reasonable power for additive and many dominant effects.
+   - Underpowered for purely recessive effects, but computationally simpler.
+
+### 7.3 Covariate adjustment & population stratification <a name="covar"></a>
 We typically adjust for:
-•	Demographics: age, sex.
-•	Study design: site, batch.
-•	Clinical factors: BMI, medication use, etc.
-•	Population structure:
-o	Allele frequencies and disease prevalence differ across ancestries.
-o	If not corrected, this population stratification can create spurious associations.
-o	Approaches:
-	Use ancestry estimation tools (e.g. STRUCTURE, EIGENSTRAT).
-	Include principal components (PCs) of genotype data as covariates in regression.
-7.4 Multiple testing
+- Demographics: age, sex.
+- Study design: site, batch.
+- Clinical factors: BMI, medication use, etc.
+- Population structure:
+   - Allele frequencies and disease prevalence differ across ancestries.
+   - If not corrected, this **population stratification** can create spurious associations.
+   - Approaches:
+      - Use ancestry estimation tools (e.g. **STRUCTURE**, **EIGENSTRAT**).
+      - Include principal components (PCs) of genotype data as covariates in regression.
+
+### 7.4 Multiple testing
 A GWAS tests hundreds of thousands to millions of SNPs → huge multiple-testing burden.
+
 Methods:
-•	Bonferroni correction
-o	Adjust significance threshold: α* = 0.05 / number_of_tests.
-o	Very conservative because tests are not fully independent.
-o	Leads to typical GWAS threshold around 5×10⁻⁸–10⁻⁷.
-•	False Discovery Rate (FDR)
-o	Controls expected proportion of false positives among declared hits.
-o	Useful when many associations are expected (e.g. eQTL, expression studies).
-•	Permutation testing
-o	Empirical approach: repeatedly shuffle phenotypes to break real associations.
-o	Build null distribution of test statistics, derive empirical p-values.
-o	Computationally expensive but robust.
-•	Genome-wide significance
-o	Based on the effective number of independent tests considering LD.
-o	For European ancestry, commonly ~5×10⁻⁸ is used.
-o	Appropriate only for truly genome-wide scans, not for focused candidate-gene or replication studies.
-7.5 Multi-locus (interaction) analysis
-•	GWAS enables investigation of:
-o	Gene–gene interactions (epistasis).
-o	Gene–environment interactions.
-•	Challenges:
-o	Combinatorial explosion: with 1 million SNPs, pairwise combinations are ~5×10¹¹.
-o	Limited power, multiple testing, computational burden.
+- **Bonferroni correction**
+   - Adjust significance threshold: α* = 0.05 / number_of_tests.
+   - Very conservative because tests are not fully independent.
+   - Leads to typical GWAS threshold around 5×10⁻⁸–10⁻⁷.
+- **False Discovery Rate (FDR)**
+   - Controls expected proportion of false positives among declared hits.
+   - Useful when many associations are expected (e.g. eQTL, expression studies).
+- **Permutation testing**
+   - Empirical approach: repeatedly shuffle phenotypes to break real associations.
+   - Build null distribution of test statistics, derive empirical p-values.
+   - Computationally expensive but robust.
+- **Genome-wide significance**
+   - Based on the effective number of independent tests considering LD.
+   - For European ancestry, commonly ~5×10⁻⁸ is used.
+   - Appropriate only for truly genome-wide scans, not for focused candidate-gene or replication studies.
+
+### 7.5 Multi-locus (interaction) analysis <a name="multi-locus"></a>
+- GWAS enables investigation of:
+   - **Gene–gene interactions (epistasis)**.
+   - **Gene–environment interactions**.
+- Challenges:
+   - Combinatorial explosion: with 1 million SNPs, pairwise combinations are ~5×10¹¹.
+   - Limited power, multiple testing, computational burden.
+
 Strategies:
-•	Filter SNPs first (e.g. by main-effect p-value, biological pathway membership).
-•	Use tools that integrate biological knowledge (e.g. pathway databases) to narrow down search space (e.g. Biofilter, INTERSNP).
-•	Recognize that some interaction models may have weak marginal effects, so filtering only on main effects can miss “pure” epistasis.
+- Filter SNPs first (e.g. by main-effect p-value, biological pathway membership).
+- Use tools that integrate biological knowledge (e.g. pathway databases) to narrow down search space (e.g. Biofilter, INTERSNP).
+- Recognize that some interaction models may have **weak marginal effects**, so filtering only on main effects can miss “pure” epistasis.
 
-8. Replication, meta-analysis and imputation
-8.1 Replication
+## 8. Replication, meta-analysis and imputation <a name="repli-meta"></a>
+### 8.1 Replication <a name="repli"></a>
 A credible GWAS finding should be:
-•	Tested in an independent sample.
-•	Using similar phenotype definitions and similar population.
-•	With adequate power (often larger than the discovery sample, to overcome “winner’s curse”, where initial effect sizes are over-estimated).
+- Tested in an **independent sample**.
+- Using **similar phenotype definitions** and **similar population**.
+- With adequate power (often larger than the discovery sample, to overcome “winner’s curse”, where initial effect sizes are over-estimated).
+
 Key points:
-•	The unit of replication is really the region, not necessarily the exact SNP, because of LD.
-•	It is acceptable to replicate with a different SNP in high LD, as long as effect direction and magnitude are consistent.
-8.2 Meta-analysis
-•	Enables combining results from multiple GWAS without sharing raw data.
-•	Requires:
-o	Harmonized phenotypes and covariate adjustments.
-o	Common reference genome build and allele coding.
-o	Careful QC to ensure samples are not duplicated across studies.
-•	Heterogeneity across studies is assessed using statistics like Q and I².
-•	Meta-analysis has powered very large discoveries (e.g. 95 lipid loci from >100,000 individuals).
-8.3 Genotype imputation
+- The **unit of replication** is really the **region**, not necessarily the exact SNP, because of LD.
+- It is acceptable to replicate with a different SNP in high LD, as long as effect direction and magnitude are consistent.
+
+### 8.2 Meta-analysis <a name="meta"></a>
+- Enables combining results from multiple GWAS without sharing raw data.
+- Requires:
+   - Harmonized phenotypes and covariate adjustments.
+   - Common reference genome build and allele coding.
+   - Careful QC to ensure samples are not duplicated across studies.
+- Heterogeneity across studies is assessed using statistics like **Q** and **I²**.
+- Meta-analysis has powered very large discoveries (e.g. 95 lipid loci from >100,000 individuals).
+
+### 8.3 Genotype imputation <a name="impute"></a>
 Problem: different studies use different SNP arrays → different sets of SNPs.
-Solution: imputation:
-•	Use reference panels (HapMap, 1000 Genomes) with dense genotype/sequence data.
-•	Use LD and haplotype information to infer untyped genotypes in your study.
-•	Outputs are often genotype probabilities or dosages rather than hard calls.
-•	Analysis must account for uncertainty (often via Bayesian or likelihood approaches).
+
+Solution: **imputation**:
+- Use reference panels (HapMap, 1000 Genomes) with dense genotype/sequence data.
+- Use LD and haplotype information to infer untyped genotypes in your study.
+- Outputs are often **genotype probabilities** or **dosages** rather than hard calls.
+- Analysis must account for uncertainty (often via Bayesian or likelihood approaches).
+
 Requirements:
-•	Reference panel must match the study population’s ancestry reasonably well.
-•	Allele coding must be aligned between study and reference.
+- Reference panel must match the study population’s ancestry reasonably well.
+- Allele coding must be aligned between study and reference.
 
-9. Looking beyond GWAS
+## 9. Looking beyond GWAS <a name="beyon-gwas"></a>
 GWAS has:
-•	Identified thousands of loci for hundreds of traits.
-•	Shifted genetics from single-gene thinking to genome-wide, polygenic views.
-•	Opened doors to:
-o	Functional follow-up (e.g. lab experiments, expression studies).
-o	Polygenic risk scores.
-o	Pharmacogenomics and precision medicine.
-Emerging directions:
-•	Whole-genome sequencing: replacing array-based genotyping, capturing both common and rare variation.
-•	Integration of multi-omics (genomics, transcriptomics, proteomics, metabolomics) and environmental data.
-•	Linking genetics with high-dimensional phenotypes such as imaging, wearables, or detailed clinical trajectories.
+- Identified thousands of loci for hundreds of traits.
+- Shifted genetics from single-gene thinking to **genome-wide**, polygenic views.
+- Opened doors to:
+   - **Functional follow-up** (e.g. lab experiments, expression studies).
+   - **Polygenic risk scores**.
+   - **Pharmacogenomics** and precision medicine.
 
-(ii) GWAS Quality Control
-MATERIALS & EQUIPMENT
+Emerging directions:
+- **Whole-genome sequencing**: replacing array-based genotyping, capturing both common and rare variation.
+- Integration of **multi-omics** (genomics, transcriptomics, proteomics, metabolomics) and environmental data.
+- Linking genetics with high-dimensional phenotypes such as **imaging**, **wearables**, or detailed clinical trajectories.
+
+## 10. GWAS Quality Control <a name="qc"></a>
+**MATERIALS & EQUIPMENT**
+
 Data
-•	Genome-wide SNP genotype data is provided on Amathuba
-•	Associated documentation or analysis scripts are provided on Amathuba
+- Genome-wide SNP genotype data is provided on Amathuba or via this link [here](#)
+- Associated documentation or analysis scripts are provided on Amathuba or via this link [here](#)
 
 Hardware
 •	Computer workstation running a Unix/Linux operating system (use UCT HPC server if needed)
