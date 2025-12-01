@@ -17,3 +17,6 @@ pharmacogenetics (e.g. warfarin dosing).
 - Variants in genes affecting warfarin dose and other drug response traits.
 
 **Terminologies**
+
+|Term|Definition|
+|:-:|:-:|
