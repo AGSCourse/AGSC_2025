@@ -419,7 +419,7 @@ Note: genuine disease-associated variants can deviate from HWE in **cases**, so 
 - Remove SNPs with very low MAF (typically <1%), especially in modest sample sizes.
 - Rare variants are harder to call accurately and offer low power in single-variant tests.
 
-# References
+# References <a name="refs"></a>
 1.	[Marees A. T. et al., Nature Protocols, 2020](https://pubmed.ncbi.nlm.nih.gov/29484742/)
 2.	[Visscher P. M. et al., Nature Reviews Genetics, 2021](https://www.nature.com/articles/s43586-021-00056-9).
 3.	PLINK 1.9 and Regenie documentation pages.
