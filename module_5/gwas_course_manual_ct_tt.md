@@ -18,5 +18,6 @@ pharmacogenetics (e.g. warfarin dosing).
 
 **Terminologies**
 
-|Term|Definition|
-|:-:|:-:|
+| Term | Definition |
+| :-: | :-: |
+| Confounding | A type of bias in statistical analysis causing spurious or distorted findings caused by a correlation between an extraneous variable (the confounding variable) and both the dependent/exposure variable (e.g. the genotype at a given locus) and the independent/outcome variable (e.g. case- control status). |
