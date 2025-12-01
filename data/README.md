@@ -1,3 +1,4 @@
-# Data sets
+# Module Data
+This repository contains all course-related data including practice datasets.
 
-`raw-GWAS`: GWAS practice data
+`raw-GWA-data.tgz`: GWAS practice data
