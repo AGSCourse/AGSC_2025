@@ -71,6 +71,7 @@ pharmacogenetics (e.g. warfarin dosing).
 | Pair-wise identity by state | The proportion of loci where a given pair of individuals share the same alleles. Given by (IBS2 + 0.5Å~IBS1) / (N SNP pairs) where IBS2 and IBS1 are the number of loci where the two individuals have 2 alleles and 1 allele in common, respectively and N SNP pairs is the number of common, non-missing, SNPs. |
 | Population substructure | The presence of distinct groups of individuals with subtle differences in allele frequency such that genetic data can be used to cluster these individuals into separate groups. |
 | Principal Component Analysis | A mathematical procedure for calculating a number of orthogonal latent variables that summarize a data matrix containing many potentially correlated variables. |
+|:- | :- |
 
 ## 2. Basic genetic concepts behind GWAS <a name="concepts"></a>
 ### 2.1 Single Nucleotide Polymorphisms (SNPs) <a name="snps"></a>
