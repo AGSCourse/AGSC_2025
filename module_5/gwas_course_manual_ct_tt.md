@@ -2,9 +2,9 @@
 Developed by Chris Kintu and Tsaone Tamuhla
 
 # Table of Contents
-1. [What is GWAS?](#gwasdef)
+[1. What is GWAS?](#gwasdef)
   - [Terminologies](#terms)
-2. [Basic genetic concepts behind GWAS](#concepts)
+[2. Basic genetic concepts behind GWAS](#concepts)
   - [2.1 Single Nucleotide Polymorphisms (SNPs)](#snps)
   
 
