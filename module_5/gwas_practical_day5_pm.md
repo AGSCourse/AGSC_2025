@@ -60,11 +60,11 @@ tar –xvzf raw-GWA-data.tgz
 
 **Genotype Data**:
 - `raw-GWA-data.ped`
-- `raw-GWA-data.ped`
+- `raw-GWA-data.map`
 
 You may also have noticed that there are some scripts (in `R` and `PERL`) we would use later in the downloaded data.
 
-The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.ped` to binary file
+The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.map` to binary file
 ```
 ./plink --file raw-GWA-data –make-bed -- out raw-GWA-data
 ```
