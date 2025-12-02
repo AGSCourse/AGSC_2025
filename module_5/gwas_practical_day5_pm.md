@@ -66,7 +66,7 @@ You may also have noticed that there are some scripts (in `R` and `PERL`) we wou
 
 The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.map` to binary file
 ```
-./plink --file raw-GWA-data –make-bed -- out raw-GWA-data
+./plink --file raw-GWA-data –make-bed --out raw-GWA-data
 ```
 
 **Note**: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
@@ -97,7 +97,7 @@ This command will calculate the mean homozygosity rate across X-chromosome marke
 We can produce a list of individuals with discordant sex data by typing:
 
 ```
-grep PROBLEM raw-GWA-data.sexcheck > raw-GWA-data.sexprobs awk '{if ($5=="PROBLEM")print }' raw-GWA-data.sexcheck | head
+grep PROBLEM raw-GWA-data.sexcheck > raw-GWA-data.sexprobs awk '{if ($5=="PROBLEM")print $0}' raw-GWA-data.sexcheck | head
 ```
 
 > **Question**:
@@ -166,7 +166,7 @@ Please note that the data for this practical have been simulated without LD betw
 list of SNPs to use called “raw-GWA-data.prune.in” which you should use for this practical. However, in general, 
 you would use the following command to generate the pruned SNP list:
 ```
-./plink --bfile raw-GWA- data --exclude high-LD-regions.txt --range --indep-pairwise 50 5 0.2 --out raw-GWA-data
+./plink --bfile raw-GWA- data --exclude high-LD-regions.txt --indep-pairwise 50 5 0.2 --out raw-GWA-data
 ```
 
 To generate IBS between each pair of individuals, type the following command at the shell prompt:
@@ -197,7 +197,7 @@ cat fail-* | sort -k1 | uniq > fail-qc-inds.txt
 The file `fail-qc-inds.txt` should now contain a list of unique individuals failing the previous QC steps. 
 To remove them from the data set, type the following command at the shell prompt:
 ```
-./plink --bfile raw -GWA-data --remove fail-qc-inds.txt --make-bed --out clean-inds-GWA-data
+./plink --bfile raw-GWA-data --remove fail-qc-inds.txt --make-bed --out clean-inds-GWA-data
 ```
 
 The binary ped file `clean-inds-GWA-data` can be used for subsequent SNP QC analyses.
@@ -260,7 +260,7 @@ The command creates a file called `fail-diffmiss-qc.txt`, which can be used to e
 
 To remove low-quality SNPs, type the following command at the shell prompt:
 ```
-./plink -- bfile clean- inds-GWA-data --exclude fail-diffmiss-qc.txt --geno 0.05 --hwe 0.00001 --make-bed --out clean-GWA-data
+./plink -- bfile clean-inds-GWA-data --exclude fail-diffmiss-qc.txt --geno 0.05 --hwe 0.00001 --make-bed --out clean-GWA-data
 ```
 
 In addition to removing SNPs identified with differential call rates between cases and controls, this command removes 
@@ -270,7 +270,7 @@ option is `--maf` which excludes all SNPs with minor allele frequency less than 
 This command will produce cleaned binary ped files for downstream association analyses:
 - `clean-GWA-data.bed`
 - `clean-GWA-data.bim`
-- `clean-GWA-data.fam`.
+- `clean-GWA-data.fam`
 
 
 In the following **Practical Two** section, Use the quality controlled data (`clean-GWA-data.*`) generated above
