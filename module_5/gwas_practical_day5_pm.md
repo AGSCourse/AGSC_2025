@@ -324,7 +324,7 @@ In the following **Practical Two** section, Use the quality controlled data (`cl
 
 ## Practical Two
 
-Basic analysis of genome-wide association studies
+### Basic analysis of genome-wide association studies
 
 In this practical, we will perform basic analysis of genotype data from the cleaned simulated genome-wide 
 association study from Part 1. We will perform logistic regression analysis under a range of disease models 
@@ -337,41 +337,32 @@ In order to run this practical, you will require the following resources:
 2.	PLINK software (http://pngu.mgh.harvard.edu/~purcell/plink/download.shtml);
 3.	Haploview software (http://www.broadinstitute.org/haploview/haploview);
 
-Before starting the practical, you will need to unpack the genome-wide association binary ped files and additional 
-analysis script files. You can do this by typing the following command at the shell prompt in the directory 
-where you downloaded the file `raw-GWA-data.tgz`:
-```
-tar -xvzf gwa-data.gz
-```
-
-Test for association with disease status under an additive model
+## Test for association with disease status under an additive model
 
 To test for association of SNPs with disease under an additive model (multiplicative on the odds scale), type the following command at the shell prompt:
 ```
-./plink --bfile gwa --logistic --ci 0.95 --out additive.analysis
+./plink --bfile clean-GWA-data --logistic --ci 0.95 --out additive.analysis
 ```
 
 For each SNP, the output file “additive.analysis.assoc.logistic” contains the following information: ID, chromosome and position, 
 minor allele, odds ratio for the minor allele and the corresponding 95% confidence interval, and the p-value for association.
 
-To produce a Manhattan plot to summarise the output of this analysis:
-- begin by starting the Haploview software. 
-- Click the “PLINK Format” tab on the left hand side.
-- Use the “Browse” buttons to select `additive.analysis.assoc.logistic` as the **Results File** and `gwa.bim` as the **Map File**.
-- Then click **OK** to read in the data, which may take some time. Once the data is read in, it will appear in a new window.
-- Click the `Plot` button and in the pop-up window select `P` for the **Y-Axis**, and `-log10` for the **Scale**.
-- In the `Significant` box, you can optionally add the threshold for genome-wide significance, which on a `-log10` scale is `7.30`.
-- Finally, click **OK** to produce the plot.
+### Manhattan plot
+To visualise the GWAS results we can draw a Manhattan plot directly in R, using the PLINK logistic output file 
+(`additive.AGE.SEX.analysis.assoc.logistic`)
 
-> **Question:**
->
-> Do you find any evidence of association at genome-wide significance?
+Use Rscript provided. Note that there are so many ways to plot the final result. This is just an example.
 
-## Test for association with disease under a genotypic model
+At the shell prompt, type:
+```
+Rscript plot2_manhattan.R
+```
+
+### Test for association with disease under a genotypic model
 
 To test for association of SNPs with disease under a general genotypic model (two degree of freedom test), type the following command at the shell prompt:
 ```
-./plink --bfile gwa --logistic genotypic --ci 0.95 --out genotypic.analysis
+./plink --bfile clean-GWA-data --logistic genotypic --ci 0.95 --out genotypic.analysis
 ```
 
 For each SNP, the output file “genotypic.analysis.assoc.logistic” contains three rows of results, one for the 
@@ -379,28 +370,32 @@ additive term from the general model, one for the dominance term, and one for th
 and dominance terms, the odds ratio and corresponding 95% confidence interval for the minor allele are presented. 
 The p-value for association is also presented for the additive and dominance terms, as well as the genotypic test.
 
+-----------
+
 You can produce a Manhattan plot in the same way as before. However, after reading in the data, you will need to filter the 
 data to focus on the association test results you want to present. For example, to present the general genotypic association 
 test results: 
 - select `TEST` from the `Filter` tab and then `=` and `GENO_2DF`, before clicking the `Filter` button.
+
+-----------
 
 > **Question:**
 >
 > How do the results compare between a genotypic and additive test of association? Is there any evidence of a deviation 
 > from additivity (by considering the dominance test)?
 
-## Test for association with disease allowing for covariates
+### Test for association with disease allowing for covariates
 
 To test for association under an additive model, allowing for non-genetic risk factors, it is necessary to provide 
-PLINK with a covariate file, here “gwa.covar”, which provides one row per individual in the study, with covariates 
+PLINK with a covariate file, here “clean-GWA-data.covar”, which provides one row per individual in the study, with covariates 
 arranged in columns. To adjust for “AGE” from the covariate file, and also for sex (which is present in the fam file, 
 so is not needed in the covariate file), type the following command at the shell prompt: 
 ```
-./plink --bfile gwa --logistic sex hide-covar --ci 0.95 --covar gwa.covar --covar-name AGE --out additive.AGE.SEX.analysis
+./plink --bfile clean-GWA-data --logistic sex hide-covar --ci 0.95 --covar clean-GWA-data.covar --covar-name AGE --out additive.AGE.SEX.analysis
 ```
 
 The option `hide-covar` suppresses printing of the parameter estimates for the covariate terms from the logistic regression 
 model. The output file `additive.AGE.SEX.analysis` contains the same information for each SNP as before, but this 
 time with the odds ratio for the minor allele, and p-value for association, adjusted for age and sex.
 
-You can produce a Manhattan plot in the same way as before. Have the results changed after adjustment
+You can produce a Manhattan plot in the same way as before. **Have the results changed after adjustment?**
