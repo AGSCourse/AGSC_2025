@@ -6,8 +6,8 @@
 This practical is based on “Data quality control in genetic case-control association studies” 
 [Anderson et al. 2010, Nature Protocols 5: 1564-73](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3025522/pdf/ukmss-33586.pdf).
 
-- Data for this practical is provided in the course data directory [here](../data) as `raw-GWA-data.tgz`.
-- You may click [here](https://github.com/AGSCourse/AGSC_2025/raw/refs/heads/main/data/raw-GWA-data.tgz) to download it directly.
+- Data for this practical is provided in the course data directory [here](data) as `raw-GWA-data.tgz`.
+- You may click [here](https://github.com/AGSCourse/AGSC_2025/raw/refs/heads/main/module_5/data/raw-GWA-data.tgz) to download it directly.
 
 ### Instructions
 This practical will introduce you to performing quality control for Genome Wide Association Study (GWAS) 
