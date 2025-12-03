@@ -139,13 +139,15 @@ Create a graph in which the observed heterozygosity rate per individual is plott
 missing SNPs per individuals is plotted on the y axis. This can be carried out using standard software such as Excel or R.
 
 **Important**
-: First install the plotting tool `geneplotter` in `R`.
-: At the shell, type:
+
+First install the plotting tool `geneplotter` in `R`.
+
+At the shell, type:
 ```
 R
 ```
 
-At the `R console`, type:
+At the R console, type:
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
 install.packages("BiocManager")
@@ -153,6 +155,7 @@ BiocManager::install("geneplotter")
 ```
 
 You will be prompted with:
+
 `Update all/some/none? [a/s/n]:`
 
 Type:
@@ -164,6 +167,7 @@ q()
 ```
 
 Prompt:
+
 `Save workspace image? [y/n/c]:`
 
 Type:
