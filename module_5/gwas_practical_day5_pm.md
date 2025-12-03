@@ -192,6 +192,11 @@ The red lines indicate suggested thresholds: missing data rate of 3% and heteroz
 of the samples failing this QC to a file named `fail-imisshet-qc.txt` (one individual per line, tab delimited). 
 This file can be used to exclude these samples from downstream analyses.
 
+Run the `imiss_vs_het_QC.R` script provided.
+```
+Rscript imiss_vs_het_QC.R
+```
+
 **Step 3**: Identification of duplicated or related individuals
 
 To minimize computational complexity, create an “independent” set of SNPs to generate the identity by descent (IBS) 
@@ -203,7 +208,8 @@ Please note that the data for this practical have been simulated without LD betw
 list of SNPs to use called “raw-GWA-data.prune.in” which you should use for this practical. However, in general, 
 you would use the following command to generate the pruned SNP list:
 ```
-./plink --bfile raw-GWA-data --exclude high-LD-regions.txt --indep-pairwise 50 5 0.2 --out raw-GWA-data
+Do not run this
+# ./plink --bfile raw-GWA-data --exclude high-LD-regions.txt --indep-pairwise 50 5 0.2 --out raw-GWA-data
 ```
 
 To generate IBS between each pair of individuals, type the following command at the shell prompt:
@@ -254,7 +260,8 @@ Output file
 The third column in the file `clean-inds-GWA-data.lmiss` (`N_MISS`) denotes the number of missing genotypes and 
 the fifth column (`F_MISS`) denotes the proportion of missing genotypes per SNP.
 
-A script for plotting a histogram of the missing genotype rate using R is supplied: `lmiss-hist.Rscript`. At the shell prompt, type:
+A script for plotting a histogram of the missing genotype rate using R is supplied: `lmiss-hist.Rscript`. 
+At the shell prompt, type:
 ```
 R CMD BATCH lmiss-hist.Rscript
 ```
