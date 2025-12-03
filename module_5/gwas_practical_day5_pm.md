@@ -66,7 +66,7 @@ You may also have noticed that there are some scripts (in `R` and `PERL`) we wou
 
 The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.map` to binary file
 ```
-./plink --file raw-GWA-data –make-bed --out raw-GWA-data
+./plink --file raw-GWA-data -–make-bed --out raw-GWA-data
 ```
 
 **Note**: code above assumes you have downloaded and unpacked plink in the same directory as your uncompressed data
@@ -136,7 +136,40 @@ You can calculate the observed heterozygosity rate per individual using the form
 `Het = (N(NM) − O(Hom))/N(NM)`
 
 Create a graph in which the observed heterozygosity rate per individual is plotted on the x axis and the proportion of 
-missing SNPs per individuals is plotted on the y axis. This can be carried out using standard software such as Excel or R. 
+missing SNPs per individuals is plotted on the y axis. This can be carried out using standard software such as Excel or R.
+
+**Important**
+: First install the plotting tool `geneplotter` in `R`.
+: At the shell, type:
+```
+R
+```
+
+At the `R console`, type:
+```
+if (!requireNamespace("BiocManager", quietly = TRUE))
+install.packages("BiocManager")
+BiocManager::install("geneplotter")
+```
+
+You will be prompted with:
+`Update all/some/none? [a/s/n]:`
+
+Type:
+`n`
+
+Then exit R:
+```
+q()
+```
+
+Prompt:
+`Save workspace image? [y/n/c]:`
+
+Type:
+`y`
+
+
 A script for calculating the heterozygosity rate and producing the graph using R is supplied: “imiss-vs-het.Rscript”. 
 At the shell prompt, type:
 ```
@@ -166,7 +199,7 @@ Please note that the data for this practical have been simulated without LD betw
 list of SNPs to use called “raw-GWA-data.prune.in” which you should use for this practical. However, in general, 
 you would use the following command to generate the pruned SNP list:
 ```
-./plink --bfile raw-GWA- data --exclude high-LD-regions.txt --indep-pairwise 50 5 0.2 --out raw-GWA-data
+./plink --bfile raw-GWA-data --exclude high-LD-regions.txt --indep-pairwise 50 5 0.2 --out raw-GWA-data
 ```
 
 To generate IBS between each pair of individuals, type the following command at the shell prompt:
