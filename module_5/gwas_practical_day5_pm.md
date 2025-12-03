@@ -387,12 +387,16 @@ test results:
 ### Test for association with disease allowing for covariates
 
 To test for association under an additive model, allowing for non-genetic risk factors, it is necessary to provide 
-PLINK with a covariate file, here “clean-GWA-data.covar”, which provides one row per individual in the study, with covariates 
-arranged in columns. To adjust for “AGE” from the covariate file, and also for sex (which is present in the fam file, 
-so is not needed in the covariate file), type the following command at the shell prompt: 
+PLINK with a covariate file, here “clean-GWA-data.covar” provided in the [data](data) folder, which provides one 
+row per individual in the study, with covariates arranged in columns. To adjust for “AGE” from the covariate file, 
+and also for sex (which is present in the fam file, so is not needed in the covariate file), 
+type the following command at the shell prompt: 
 ```
 ./plink --bfile clean-GWA-data --logistic sex hide-covar --ci 0.95 --covar clean-GWA-data.covar --covar-name AGE --out additive.AGE.SEX.analysis
 ```
+
+Click [here](https://raw.githubusercontent.com/AGSCourse/AGSC_2025/refs/heads/main/module_5/data/clean-GWA-data.covar) to download 
+the covariates file to your local machine.
 
 The option `hide-covar` suppresses printing of the parameter estimates for the covariate terms from the logistic regression 
 model. The output file `additive.AGE.SEX.analysis` contains the same information for each SNP as before, but this 
