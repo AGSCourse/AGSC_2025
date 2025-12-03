@@ -395,7 +395,7 @@ type the following command at the shell prompt:
 ./plink --bfile clean-GWA-data --logistic sex hide-covar --ci 0.95 --covar clean-GWA-data.covar --covar-name AGE --out additive.AGE.SEX.analysis
 ```
 
-Click [here](https://raw.githubusercontent.com/AGSCourse/AGSC_2025/refs/heads/main/module_5/data/clean-GWA-data.covar) to download 
+Click [here](https://raw.githubusercontent.com/AGSCourse/AGSC_2025/refs/heads/main/module_5/data/clean-GWA-data.covar) and then type `Ctrl+S` to download 
 the covariates file to your local machine.
 
 The option `hide-covar` suppresses printing of the parameter estimates for the covariate terms from the logistic regression 
