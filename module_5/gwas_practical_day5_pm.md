@@ -255,7 +255,9 @@ To calculate the missing genotype rate for each SNP, type the following command 
 ./plink --bfile clean-inds-GWA-data --missing --out clean-inds-GWA-data
 ```
 
-Output file
+**Output file**
+
+--------------------------
 
 The third column in the file `clean-inds-GWA-data.lmiss` (`N_MISS`) denotes the number of missing genotypes and 
 the fifth column (`F_MISS`) denotes the proportion of missing genotypes per SNP.
@@ -272,8 +274,9 @@ This will create the graph `clean-inds-GWA-data.lmiss.pdf`.
 >
 > Q8. Examine the plot to decide a reasonable threshold at which to exclude SNPs based on elevated missing data.
 
-
 The dotted line indicates a suggested threshold of a missing data rate of 5%. This file can easily be adapted to highlight different thresholds.
+
+--------------------------
 
 To remove SNPs with call rate less than 5%, simply add the `--geno 0.05` option to the PLINK command line. 
 We will do this below when creating our final cleaned data set.
@@ -285,10 +288,10 @@ To test for differential call rates between cases and controls for each SNP, typ
 ./plink --bfile clean-inds-GWA-data --test-missing --out clean-inds-GWA-data
 ```
 
-Output file
+**Output file**
 
 The output of this test can be found in the file “clean-inds-GWA-data.missing”. We have created a script to highlight all SNPs with
-significant differences in case and control call rates (p<10-5) from this output file. This script can be easily 
+significant differences in case and control call rates (_p_<10^-5) from this output file. This script can be easily 
 adapted to other data sets and thresholds for differential call rates.
 
 To run the script file, type the following command at the shell prompt:
@@ -296,7 +299,7 @@ To run the script file, type the following command at the shell prompt:
 perl run-diffmiss-qc.pl clean-inds-GWA-data
 ```
 
-Output file
+**Output file**
 
 The command creates a file called `fail-diffmiss-qc.txt`, which can be used to exclude these SNPs from downstream association analyses.
 
@@ -304,7 +307,7 @@ The command creates a file called `fail-diffmiss-qc.txt`, which can be used to e
 
 To remove low-quality SNPs, type the following command at the shell prompt:
 ```
-./plink -- bfile clean-inds-GWA-data --exclude fail-diffmiss-qc.txt --geno 0.05 --hwe 0.00001 --make-bed --out clean-GWA-data
+./plink --bfile clean-inds-GWA-data --exclude fail-diffmiss-qc.txt --geno 0.05 --hwe 0.00001 --make-bed --out clean-GWA-data
 ```
 
 In addition to removing SNPs identified with differential call rates between cases and controls, this command removes 
@@ -323,19 +326,16 @@ In the following **Practical Two** section, Use the quality controlled data (`cl
 
 Basic analysis of genome-wide association studies
 
-In this practical, we will perform basic analysis of genotype data from a simulated genome-wide association 
-study of 2000 cases and 2000 controls, typed for 306,102 autosomal SNPs. You can assume that the data have 
-already assessed for quality control, with low quality samples and SNPs removed. We will perform logistic 
-regression analysis under a range of disease models and allow for adjustment for covariates.
+In this practical, we will perform basic analysis of genotype data from the cleaned simulated genome-wide 
+association study from Part 1. We will perform logistic regression analysis under a range of disease models 
+and allow for adjustment for covariates.
 
-This practical is based on “Basic statistical analysis in genetic case-control studies” (**Clarke et al. 2011, Nature Protocols 6: 121-33**).
+This practical is based on the `clean-GWA-data` we just generated above.
 
 In order to run this practical, you will require the following resources:
-
 1.	Computing workstation with Unix or Linux operating system;
 2.	PLINK software (http://pngu.mgh.harvard.edu/~purcell/plink/download.shtml);
 3.	Haploview software (http://www.broadinstitute.org/haploview/haploview);
-4.	Genome-wide association binary ped files (which can be downloaded from http://www.well.ox.ac.uk/dtc/).
 
 Before starting the practical, you will need to unpack the genome-wide association binary ped files and additional 
 analysis script files. You can do this by typing the following command at the shell prompt in the directory 
