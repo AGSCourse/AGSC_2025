@@ -93,7 +93,7 @@ multiple GWAS to:
 For common complex traits:
 
 - Most risk variants have **modest odds ratios** (often around
-  1.1--1.3).
+  1.1-1.3).
 
 - Even well-powered single studies may detect only a fraction of the
   true signals.
@@ -184,7 +184,7 @@ standardize multiple aspects of each contributing study.
 
 1.  **Study design and population**
 
-    - Case--control or cohort design
+    - Case-control or cohort design
 
     - Inclusion/exclusion criteria
 
@@ -194,7 +194,7 @@ standardize multiple aspects of each contributing study.
 
 > Typical checks include:
 
-- Hardy--Weinberg equilibrium
+- Hardy-Weinberg equilibrium
 
 - Call/missingness rates
 
@@ -265,9 +265,9 @@ Common measures:
 
   - Rough interpretation:
 
-    - \~0--25%: low heterogeneity
+    - \~0-25%: low heterogeneity
 
-    - \~25--75%: moderate
+    - \~25-75%: moderate
 
     - 75%: high
 
@@ -288,7 +288,7 @@ Possible reasons for heterogeneity include:
 - Pure chance fluctuations
 
 Heterogeneity can be scientifically informative (e.g. pointing to
-gene--environment interaction), but it also limits how widely a summary
+gene-environment interaction), but it also limits how widely a summary
 effect can be generalized.
 
 ## Fixed-effect vs random-effects meta-analysis <a name="fere-meta"></a>
@@ -360,7 +360,7 @@ A classic example of GWAS meta-analysis is T2D:
 
   - Corrected for population stratification.
 
-**Stage 1** -- Meta-analysis of GWAS datasets:
+**Stage 1** - Meta-analysis of GWAS datasets:
 
 - \~10,000 individuals
 
@@ -368,14 +368,14 @@ A classic example of GWAS meta-analysis is T2D:
 
 - Produced a ranked list of association signals.
 
-**Stage 2** -- Follow-up of promising SNPs:
+**Stage 2** - Follow-up of promising SNPs:
 
 - Dozens of top SNPs were genotyped in \~20,000 additional samples.
 
 - More associated loci emerged than expected by chance, supporting true
   signal enrichment.
 
-**Stage 3** -- Large-scale replication:
+**Stage 3** - Large-scale replication:
 
 - A smaller set of the most promising SNPs was tested in \>50,000
   additional individuals.
@@ -386,7 +386,7 @@ A classic example of GWAS meta-analysis is T2D:
 > Key observations:
 
 - All T2D risk variants discovered had **small effect sizes** (allelic
-  ORs around 1.1--1.15).
+  ORs around 1.1-1.15).
 
 - No single study alone had enough power to reach genome-wide
   significance for most loci.
@@ -428,7 +428,7 @@ remain:
 
   - Multi-omics data (e.g. gene expression, methylation)
 
-  - Gene--environment interactions
+  - Gene-environment interactions
 
 - **Clinical translation**\
   For risk prediction and "polygenic scores", we need:
