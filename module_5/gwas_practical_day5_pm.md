@@ -1,7 +1,22 @@
 # Genome wide Association Studies - Practical Session
 
+## Table of Contents <a name="toc"></a>
+-  [Quality control in genome-wide association studies](#qc-gwas)
+    - [Instructions](#instruc)
+-  [Installing and running PLINK (in your working directory)](#plink-install)
+-  [PLINK general usage](#plink-usage)
+-  [Quality control in genome-wide association studies](#qc)
+-  [Part A: Sample QC](#ind-qc)
+-  [Part B: SNP Quality Control](#snp-qc)
+-  [Practical Two](#prac-2)
+    - [Basic analysis of genome-wide association studies](#basic-gwas)
+-  [Test for association with disease status under an additive model](#add)
+    - [Manhattan plot](#m-plot)
+    - [Test for association with disease under a genotypic model](#geno)
+    - [Test for association with disease allowing for covariates](#covar)
 
-## Quality control in genome-wide association studies
+
+## Quality control in genome-wide association studies <a name="qc-gwas"></a>
 
 This practical is based on “Data quality control in genetic case-control association studies” 
 [Anderson et al. 2010, Nature Protocols 5: 1564-73](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3025522/pdf/ukmss-33586.pdf).
@@ -9,7 +24,7 @@ This practical is based on “Data quality control in genetic case-control assoc
 - Data for this practical is provided in the course data directory [here](data) as `raw-GWA-data.tgz`.
 - You may click [here](https://github.com/AGSCourse/AGSC_2025/raw/refs/heads/main/module_5/data/raw-GWA-data.tgz) to download it directly.
 
-### Instructions
+### Instructions <a name="instruc"></a>
 This practical will introduce you to performing quality control for Genome Wide Association Study (GWAS) 
 datasets using a program called PLINK. You might finish quicker if you already have experience working on 
 PLINK and sufficient programming experience. Please read the instruction before starting.
@@ -27,7 +42,7 @@ PLINK and sufficient programming experience. Please read the instruction before 
    It would take longer if you run the analysis on your stand-alone computer/laptop
 
 
-## Installing and running PLINK (in your working directory)
+## Installing and running PLINK (in your working directory) <a name="plink-install"></a>
 
 PLINK Website: https://www.cog-genomics.org/plink/2.0/
 ```
@@ -35,14 +50,14 @@ wget http://s3.amazonaws.com/plink2-assets/plink2_linux_x86_64_20210203.zip
 Unzip plink2_linux_x86_64_20210203.zip
 ```
 
-## PLINK general usage
+## PLINK general usage <a name="plink-usage"></a>
 Website: https://www.cog-genomics.org/plink/2.0/general_usage
 
 The old PLINK manual is quite useful. It is here: https://zzz.bwh.harvard.edu/plink/dist/plink-doc-1.07.pdf 
 
 **Remember that there are many versions of PLINK. The current version is PLINK2 which can be found on this link**: https://www.cog-genomics.org/plink/2.0/
 
-## Quality control in genome-wide association studies
+## Quality control in genome-wide association studies <a name="qc"></a>
 **Instruction**: 
 In this practical, we will go through the steps in performing quality control (QC) of genotype data from a simulated 
 genome-wide association study of 1000 cases and 1000 controls, typed for 317,503 autosomal and X chromosome SNPs.
@@ -83,7 +98,7 @@ The first step is to convert your `raw-GWA-data.ped` and `raw-GWA-data.map` to b
 > Q5. How many controls?
 
 
-## Part A: Sample QC
+## Part A: Sample QC <a name="ind-qc"></a>
 
 **Step 1**: Identification of individuals with discordant sex information
 
@@ -246,7 +261,10 @@ To remove them from the data set, type the following command at the shell prompt
 The binary ped file `clean-inds-GWA-data` can be used for subsequent SNP QC analyses.
 
 
-## Part B: SNP Quality Control
+[Back to top](#toc)
+
+
+## Part B: SNP Quality Control <a name="snp-qc"></a>
 
 **Step 1**: Identification of all SNPs with an excessive missing data rate
 
@@ -301,9 +319,9 @@ This command will produce cleaned binary ped files for downstream association an
 
 In the following **Practical Two** section, Use the quality controlled data (`clean-GWA-data.*`) generated above
 
-## Practical Two
+## Practical Two <a name="prac-2"></a>
 
-### Basic analysis of genome-wide association studies
+### Basic analysis of genome-wide association studies <a name="basic-gwas"></a>
 
 In this practical, we will perform basic analysis of genotype data from the cleaned simulated genome-wide 
 association study from Part 1. We will perform logistic regression analysis under a range of disease models 
@@ -315,7 +333,7 @@ In order to run this practical, you will require the following resources:
 1.	Computing workstation with Unix or Linux operating system;
 2.	PLINK software (http://pngu.mgh.harvard.edu/~purcell/plink/download.shtml);
 
-## Test for association with disease status under an additive model
+## Test for association with disease status under an additive model <a name="add"></a>
 
 To test for association of SNPs with disease under an additive model (multiplicative on the odds scale), type the following command at the shell prompt:
 ```
@@ -325,7 +343,7 @@ To test for association of SNPs with disease under an additive model (multiplica
 For each SNP, the output file “additive.analysis.assoc.logistic” contains the following information: ID, chromosome and position, 
 minor allele, odds ratio for the minor allele and the corresponding 95% confidence interval, and the p-value for association.
 
-### Manhattan plot
+### Manhattan plot <a name="m-plot"></a>
 To visualise the GWAS results we can draw a Manhattan plot directly in R, using the PLINK logistic output file 
 (`additive.AGE.SEX.analysis.assoc.logistic`)
 
@@ -336,7 +354,7 @@ At the shell prompt, type:
 Rscript plot2_manhattan.R
 ```
 
-### Test for association with disease under a genotypic model
+### Test for association with disease under a genotypic model <a name="geno"></a>
 
 To test for association of SNPs with disease under a general genotypic model (two degree of freedom test), type the following command at the shell prompt:
 ```
@@ -354,7 +372,7 @@ The p-value for association is also presented for the additive and dominance ter
 > How do the results compare between a genotypic and additive test of association? Is there any evidence of a deviation 
 > from additivity (by considering the dominance test)?
 
-### Test for association with disease allowing for covariates
+### Test for association with disease allowing for covariates <a name="covar"></a>
 
 To test for association under an additive model, allowing for non-genetic risk factors, it is necessary to provide 
 PLINK with a covariate file, here “clean-GWA-data.covar” provided in the [data](data) folder, which provides one 
@@ -373,3 +391,6 @@ model. The output file `additive.AGE.SEX.analysis` contains the same information
 time with the odds ratio for the minor allele, and p-value for association, adjusted for age and sex.
 
 You can produce a Manhattan plot in the same way as before. **Have the results changed after adjustment?**
+
+[Back to top](#toc)
+
