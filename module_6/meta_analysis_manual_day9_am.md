@@ -1,7 +1,22 @@
-**Module 6.5:** **Meta-analysis in Genome-Wide Association Studies
-(GWAS)**
+# Module 6.5: Meta-analysis in Genome-Wide Association Studies (GWAS)
 
-**Learning objectives**
+## Table of Contents <a name="toc"></a>
+- [Learning objectives](#lobj)
+- [Expected learning outcomes](#expo)
+- [Introduction](#intro)
+- [Why do we need meta-analysis in GWAS?](#why-meta)
+- [Basic idea of GWAS meta-analysis](#basic-id)
+- [Setting up a GWAS meta-analysis: consortia and bias](#setup)
+- [Information needed from each study](#info)
+- [Heterogeneity: when studies disagree](#hetero)
+- [Fixed-effect vs random-effects meta-analysis](#fere-meta)
+- [Bayesian and sequential perspectives](#bayes)
+- [Example: Type 2 diabetes (T2D)](#example)
+- [Future directions and challenges](#future-dir)
+- [Key points from the module](#key-points)
+
+
+## Learning objectives <a name="lobj"></a>
 
 In this session, participants will:
 
@@ -28,7 +43,7 @@ In this session, participants will:
   enables discovery of loci that would be underpowered in single
   studies.
 
-**Expected learning outcomes**
+## Expected learning outcomes <a name="expo"></a>
 
 By the end of this section, participants should be able to:
 
@@ -55,7 +70,7 @@ By the end of this section, participants should be able to:
 - Critically assess published GWAS meta-analyses with respect to design,
   QC, handling of heterogeneity, and replication strategy.
 
-**Introduction**
+## Introduction <a name="intro"></a>
 
 Genome-wide association studies (GWAS) have made it possible to find
 many common genetic variants associated with complex diseases and
@@ -73,7 +88,7 @@ multiple GWAS to:
 
 - Discover additional loci that would be missed by any single study
 
-**Why do we need meta-analysis in GWAS?**
+## Why do we need meta-analysis in GWAS? <a name="why-meta"></a>
 
 For common complex traits:
 
@@ -100,7 +115,7 @@ In practice, GWAS meta-analysis has become the standard route for moving
 from early "hits" to a robust, well-supported set of loci for a given
 trait.
 
-**Basic idea of GWAS meta-analysis**
+## Basic idea of GWAS meta-analysis <a name="basic-id"></a>
 
 Most GWAS meta-analyses combine **summary statistics**, not raw
 genotypes:
@@ -130,7 +145,7 @@ Modern practice also uses **imputation**:
 Meta-analysis can be **cumulative**: new studies can be added over time
 as they become available, updating the evidence for each SNP.
 
-**Setting up a GWAS meta-analysis: consortia and bias**
+## Setting up a GWAS meta-analysis: consortia and bias <a name="setup"></a>
 
 Most large GWAS meta-analyses are carried out within **consortia**:
 
@@ -158,7 +173,11 @@ Public repositories (such as dbGaP) also support data-sharing for GWAS,
 although they come with additional requirements around privacy and data
 use.
 
-**Information needed from each study**
+
+[Back to top](#toc)
+
+
+## Information needed from each study <a name="info"></a>
 
 Before combining results, the meta-analysis team needs to understand and
 standardize multiple aspects of each contributing study.
@@ -224,7 +243,7 @@ standardize multiple aspects of each contributing study.
 A failure at any of these steps can easily create spurious associations
 or obscure true signals.
 
-**Heterogeneity: when studies disagree**
+## Heterogeneity: when studies disagree <a name="hetero"></a>
 
 Meta-analysis does not assume that all studies show exactly the same
 effect. Instead, we can quantify and interpret **heterogeneity**.
@@ -272,7 +291,7 @@ Heterogeneity can be scientifically informative (e.g. pointing to
 gene--environment interaction), but it also limits how widely a summary
 effect can be generalized.
 
-**Fixed-effect vs random-effects meta-analysis**
+## Fixed-effect vs random-effects meta-analysis <a name="fere-meta"></a>
 
 Two main models are used when combining effect sizes:
 
@@ -309,7 +328,7 @@ In GWAS meta-analysis:
   often supplemented by heterogeneity testing and, sometimes,
   random-effects estimates for follow-up of specific loci.
 
-**Bayesian and sequential perspectives**
+## Bayesian and sequential perspectives <a name="bayes"></a>
 
 Because GWAS meta-analysis is often **cumulative**, it fits naturally
 into Bayesian and sequential frameworks:
@@ -327,7 +346,7 @@ In practice, most GWAS consortia still rely on frequentist fixed-effect
 scans with predefined genome-wide significance thresholds, sometimes
 complemented with simple Bayesian credibility metrics.
 
-**Example: Type 2 diabetes (T2D)**
+## Example: Type 2 diabetes (T2D) <a name="example"></a>
 
 A classic example of GWAS meta-analysis is T2D:
 
@@ -364,7 +383,7 @@ A classic example of GWAS meta-analysis is T2D:
 - Several loci reached **genome-wide significance** only after this
   combined effort.
 
-Key observations:
+> Key observations:
 
 - All T2D risk variants discovered had **small effect sizes** (allelic
   ORs around 1.1--1.15).
@@ -379,7 +398,11 @@ Even after meta-analysis, further work (fine-mapping, sequencing,
 functional studies) is needed to identify the true causal variants and
 understand their biology.
 
-**Future directions and challenges**
+
+[Back to top](#toc)
+
+
+## Future directions and challenges <a name="future-dir"></a>
 
 Meta-analysis has become a central tool for GWAS, but several challenges
 remain:
@@ -423,7 +446,7 @@ remain:
 
   - Continuous updating of the evidence base for genetic associations.
 
-**Key points from the module**
+## Key points from the module <a name="key-points"></a>
 
 - GWAS meta-analysis is essential because **effect sizes are small**,
   and single studies are underpowered.
@@ -445,3 +468,6 @@ remain:
 
 - Future work will extend these methods to more diverse populations,
   more complex data types, and clinical applications.
+
+[Back to top](#toc)
+
