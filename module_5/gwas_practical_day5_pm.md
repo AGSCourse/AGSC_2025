@@ -257,27 +257,6 @@ To calculate the missing genotype rate for each SNP, type the following command 
 
 **Output file**
 
---------------------------
-
-The third column in the file `clean-inds-GWA-data.lmiss` (`N_MISS`) denotes the number of missing genotypes and 
-the fifth column (`F_MISS`) denotes the proportion of missing genotypes per SNP.
-
-A script for plotting a histogram of the missing genotype rate using R is supplied: `lmiss-hist.Rscript`. 
-At the shell prompt, type:
-```
-R CMD BATCH lmiss-hist.Rscript
-```
-
-This will create the graph `clean-inds-GWA-data.lmiss.pdf`.
-
-> **Question:**
->
-> Q8. Examine the plot to decide a reasonable threshold at which to exclude SNPs based on elevated missing data.
-
-The dotted line indicates a suggested threshold of a missing data rate of 5%. This file can easily be adapted to highlight different thresholds.
-
---------------------------
-
 To remove SNPs with call rate less than 5%, simply add the `--geno 0.05` option to the PLINK command line. 
 We will do this below when creating our final cleaned data set.
 
@@ -335,7 +314,6 @@ This practical is based on the `clean-GWA-data` we just generated above.
 In order to run this practical, you will require the following resources:
 1.	Computing workstation with Unix or Linux operating system;
 2.	PLINK software (http://pngu.mgh.harvard.edu/~purcell/plink/download.shtml);
-3.	Haploview software (http://www.broadinstitute.org/haploview/haploview);
 
 ## Test for association with disease status under an additive model
 
@@ -370,14 +348,6 @@ additive term from the general model, one for the dominance term, and one for th
 and dominance terms, the odds ratio and corresponding 95% confidence interval for the minor allele are presented. 
 The p-value for association is also presented for the additive and dominance terms, as well as the genotypic test.
 
------------
-
-You can produce a Manhattan plot in the same way as before. However, after reading in the data, you will need to filter the 
-data to focus on the association test results you want to present. For example, to present the general genotypic association 
-test results: 
-- select `TEST` from the `Filter` tab and then `=` and `GENO_2DF`, before clicking the `Filter` button.
-
------------
 
 > **Question:**
 >
